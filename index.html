@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bilgery Solutions</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ls-dark-blue: #042344;
+            --ls-orange: #ff9e16;
+            --ls-light-bg: #f8f9fa;
+            --ls-text-gray: #555;
+            --ls-green: #2ecc71;
+        }
+
+        .highlight-blue {
+            color: #1871d3;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #333;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            background-color: #fff;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+            backdrop-filter: saturate(180%) blur(12px);
+            background:
+                color-mix(in srgb, #ffffff 72%, transparent);
+            border-bottom: 1px solid rgba(0, 0, 0, .06);
+        }
+
+        .navbar-brand img {
+            height: 40px;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            color: #333;
+            margin-right: 15px;
+        }
+
+        .btn-demo {
+            background-color: var(--ls-orange);
+            color: white;
+            font-weight: 600;
+            border-radius: 5px;
+            padding: 10px 20px;
+            border: none;
+        }
+
+        .btn-demo:hover {
+            background-color: #e68e13;
+            color: white;
+        }
+
+        .cta-color {
+            background-image: linear-gradient(135deg, #f98e1d, #ffac3b);
+            transition: all .3s
+        }
+
+        .cta-color:hover {
+            background-image: linear-gradient(135deg, #ed8312, #f9a22c)
+        }
+
+        /* Hero Section Styling */
+        .hero-section {
+            background-color: var(--ls-dark-blue);
+            color: white;
+            padding: 80px 0 40px 0;
+            margin-top: 76px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-headline {
+            font-size: 2.8rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero-sub {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .hero-checks li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-checks i {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px;
+            border-radius: 4px;
+            margin-right: 10px;
+            font-size: 0.8rem;
+        }
+
+        .play-link {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            margin-left: 20px;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .play-link i {
+            margin-right: 8px;
+        }
+
+        /* Logos Section */
+        .logo-section {
+            background-color: var(--ls-dark-blue);
+            color: white;
+            padding-bottom: 60px;
+            text-align: center;
+        }
+
+        .logo-text {
+            opacity: 0.7;
+            margin-bottom: 30px;
+            font-size: 0.9rem;
+        }
+
+        .logo-row img {
+            height: 30px;
+            filter: brightness(0) invert(1);
+            /* Macht Logos weiß */
+            opacity: 0.8;
+            margin: 0 20px;
+        }
+
+        /* Application/Cards Section */
+        .app-section {
+            padding: 80px 0;
+            background-color: #f9f9f9;
+        }
+
+        .section-headline {
+            font-weight: 700;
+            margin-bottom: 50px;
+            text-align: center;
+        }
+
+        .card-custom {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+            height: 100%;
+        }
+
+        .card-custom:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-img-top {
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-body {
+            padding: 30px;
+        }
+
+        .card-title {
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .card-text {
+            font-size: 0.95rem;
+            color: var(--ls-text-gray);
+            margin-bottom: 20px;
+        }
+
+        .card-link {
+            text-decoration: none;
+            color: #2b7de0;
+            font-weight: 600;
+        }
+
+        /* Features Section */
+        .features-section {
+            padding: 100px 0;
+            background-color: white;
+        }
+
+        .feature-label {
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #666;
+            margin-bottom: 15px;
+            display: inline-block;
+            border-left: 3px solid #2b7de0;
+            padding-left: 10px;
+        }
+
+        .feature-headline {
+            font-weight: 700;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .check-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .check-item {
+            display: flex;
+            align-items: center;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .check-item i {
+            color: white;
+            background-color: var(--ls-green);
+            border-radius: 50%;
+            padding: 4px;
+            font-size: 0.6rem;
+            margin-right: 10px;
+        }
+
+        /* Trustpilot Badge Simulation */
+        .trustpilot-badge {
+            background: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            max-width: 200px;
+        }
+
+        .stars {
+            color: #00b67a;
+        }
+
+        /* Bottom CTA */
+        .bottom-cta {
+            background-color: #f4f6f8;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 991px) {
+            .hero-headline {
+                font-size: 2rem;
+            }
+
+            .hero-img-container {
+                margin-top: 50px;
+            }
+        }
+
+        /* --- Styles für die neuen Sektionen --- */
+
+        /* Steps Sektion */
+        .steps-section {
+            padding: 100px 0;
+            background-color: white;
+        }
+
+        .step-circle {
+            width: 40px;
+            height: 40px;
+            background-color: var(--ls-dark-blue);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .step-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .step-text {
+            font-size: 0.9rem;
+            color: var(--ls-text-gray);
+            line-height: 1.5;
+        }
+
+        /* FAQ Sektion */
+        .faq-section {
+            background-color: #f8f9fa;
+            /* Leichtes Grau */
+            padding: 80px 0;
+        }
+
+        .faq-card {
+            background: white;
+            border: none;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+        }
+
+        .accordion-button {
+            background-color: white;
+            color: #333;
+            font-weight: 600;
+            border-radius: 8px !important;
+            /* Wichtig für Bootstrap Override */
+            box-shadow: none !important;
+            padding: 20px;
+        }
+
+        .accordion-button:not(.collapsed) {
+            background-color: white;
+            color: var(--ls-dark-blue);
+        }
+
+        /* Entfernt den Standard-Rahmen von Bootstrap Accordions */
+        .accordion-item {
+            border: none;
+            background: transparent;
+        }
+
+        /* Finaler CTA Banner (Blau) */
+        .final-cta-section {
+            background-color: var(--ls-dark-blue);
+            color: white;
+            padding-top: 60px;
+            padding-bottom: 40px;
+            overflow: hidden;
+        }
+
+        .final-cta-img {
+            margin-bottom: -10px;
+        }
+
+        /* Footer Styling */
+        footer {
+            background-color: white;
+            padding-top: 60px;
+            font-size: 0.9rem;
+            color: #333;
+        }
+
+        .footer-col-title {
+            color: #999;
+            font-size: 0.85rem;
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .footer-links a:hover {
+            color: var(--ls-orange);
+        }
+
+        .hotline-badge {
+            background-color: #eef5ff;
+            color: #2b7de0;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-weight: 600;
+            display: inline-block;
+            margin: 15px 0;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #eee;
+            padding: 30px 0;
+            margin-top: 50px;
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        /* --- Booking & Testimonials Styles --- */
+
+        .booking-section {
+            padding: 80px 0;
+            background-color: #f9f9f9;
+        }
+
+        /* Der weiße/blaue Container */
+        .booking-wrapper {
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            /* Damit die Ecken auch beim blauen Hintergrund rund bleiben */
+        }
+
+        /* Linke Seite (Formular) */
+        .booking-form-col {
+            padding: 40px;
+        }
+
+        .form-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #888;
+            margin-bottom: 5px;
+        }
+
+        .form-control {
+            padding: 12px;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            background-color: #f8f9fa;
+        }
+
+        .form-control:focus {
+            box-shadow: none;
+            border-color: var(--ls-orange);
+            background-color: white;
+        }
+
+        .flag-icon {
+            background-color: #f8f9fa;
+            border: 1px solid #e0e0e0;
+            border-right: none;
+        }
+
+        /* Checkboxen Styling */
+        .form-check-input {
+            width: 1.3em;
+            height: 1.3em;
+            margin-top: 0.1em;
+            border: 1px solid #ccc;
+        }
+
+        .form-check-input:checked {
+            background-color: var(--ls-orange);
+            border-color: var(--ls-orange);
+        }
+
+        .form-check-label {
+            font-size: 0.95rem;
+            color: #444;
+            padding-top: 2px;
+        }
+
+        /* Rechte Seite (Blau / Info) */
+        .booking-info-col {
+            background-color: var(--ls-dark-blue);
+            color: white;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .profile-img-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .benefit-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+
+        .benefit-list li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .benefit-list i {
+            background-color: rgba(255, 255, 255, 0.15);
+            min-width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 0.7rem;
+            margin-top: 2px;
+        }
+
+        /* Testimonials Section */
+        .testimonials-section {
+            padding: 60px 0 100px 0;
+            background-color: #fff;
+            /* Oder leichtes Grau, je nach Wunsch */
+        }
+
+        .testimonial-card {
+            background-color: #f9f9f9;
+            padding: 30px;
+            border-radius: 12px;
+            height: 100%;
+        }
+
+        .testimonial-stars {
+            color: var(--ls-orange);
+            /* Sterne in Orange */
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+
+        .testimonial-text {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .author-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <!-- <i class="fas fa-layer-group fa-2x text-primary me-2"></i> -->
+                <span style="font-weight: 600; font-size: 1.2rem; color: #042344;">BILGERY <span style="font-weight: 400;">SOLUTIONS</span></span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="#features-section">Angebot</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#steps-section">Vorgehen</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#booking-section">Kontakt</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#faq-section">FAQs</a></li>
+                    <!-- <li class="nav-item ms-3"><a class="nav-link" href="#"><i class="fas fa-sign-in-alt me-1"></i> Login</a></li> -->
+                    <li class="nav-item ms-2"><a href="#" class="btn btn-demo">Kostenlos beraten lassen</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section class="hero-section">
+        <div class="container">
+            <div style="display: flex; align-items: center; gap: 12px;" class="mb-3">
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <span class="rating-text">Trustpilot Bewertung</span>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="hero-headline">Führen Sie noch heute Künstliche Intelligenz in Ihrem Unternehmen ein</h1>
+                    <p class="hero-sub">
+                        Wir helfen mittelständischen Unternehmen, KI schnell, sicher und messbar einzusetzen – wir entwickeln für Sie eine klare Strategie, führen tragfährige Lösungen ein und kümmern uns um das Change Management.
+                    </p>
+                    <!-- <ul class="list-unstyled hero-checks">
+                        <li><i class="fas fa-check"></i> Kinderleichte Inhaltserstellung mit Drag & Drop Editor</li>
+                        <li><i class="fas fa-check"></i> Premium-Support & strategische Unterstützung</li>
+                        <li><i class="fas fa-check"></i> Server in Frankfurt & DSGVO Konform</li>
+                    </ul> -->
+                    <div class="mt-4 d-flex flex-wrap align-items-center gap-3">
+                        <a href="#" class="btn btn-demo cta-color py-3 px-4">Jetzt kostenlos beraten lassen</a>
+                        <a href="#" class="play-link"><i class="fas fa-play-circle"></i> Präsentation ansehen</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 d-flex align-items-center justify-content-center pt-5 pt-lg-0">
+                    <div class="p-4 rounded-3 w-100" style="background-color: #f0f4f8; color: #333; box-shadow: 0 5px 20px rgba(0,0,0,0.3); max-width: 480px;">
+                        <h3 class="fw-bold fs-5 mb-3" style="color: var(--ls-dark-blue);">
+                            Kostenlose Broschüre sichern
+                        </h3>
+                        <ul class="list-unstyled mb-3 small">
+                            <li class="d-flex align-items-start mb-2">
+                                <i class="fas fa-rocket text-primary me-2 mt-1" style="font-size: 0.9rem; color: #2b7de0 !important; flex-shrink: 0;"></i>
+                                <div style="line-height: 1.4;">Bis zu 30% Zeitersparnis im Büro durch Automatisierung</div>
+                            </li>
+                            <li class="d-flex align-items-start mb-2">
+                                <i class="fas fa-users text-primary me-2 mt-1" style="font-size: 0.9rem; color: #2b7de0 !important; flex-shrink: 0;"></i>
+                                <div style="line-height: 1.4;">Der Einsatz von KI entlastet Sie und Ihre Mitarbeiter</div>
+                            </li>
+                            <li class="d-flex align-items-start">
+                                <i class="fas fa-handshake text-primary me-2 mt-1" style="font-size: 0.9rem; color: #2b7de0 !important; flex-shrink: 0;"></i>
+                                <div style="line-height: 1.4;">Automatisierte Prozesse gehören heute mit dazu</div>
+                            </li>
+                        </ul>
+                        <div class="my-4" style="height: 1px; background: linear-gradient(90deg, transparent, rgba(2, 6, 23, .10), transparent);"></div>
+                        <!-- <p class="small text-muted mt-3 mb-3">
+                            Erhalten Sie jetzt eine detaillierte Broschüre zu den Potenzialen.
+                        </p> -->
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Ihre geschäftliche E-Mail" aria-label="E-Mail für Broschüre" style="border-radius: 6px 0 0 6px;">
+                            <button class="btn btn-sm btn-primary" type="button" style="background-color: var(--ls-dark-blue); border-color: var(--ls-dark-blue); border-radius: 0 6px 6px 0; font-weight: 600;"> Jetzt zuschicken
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="logo-section">
+        <div class="container">
+            <p class="logo-text">Unternehmen die uns bereits als Transformations-Partner nutzen</p>
+            <div class="d-flex justify-content-center flex-wrap align-items-center logo-row">
+                <span class="h4 fw-bold mx-4 opacity-75">FLUIDRA DEUTSCHLAND</span>
+                <span class="h4 fw-bold mx-4 opacity-75">KROMER IMMOBILIEN</span>
+                <span class="h4 fw-bold mx-4 opacity-75">METALLBAU BRENNER</span>
+                <span class="h4 fw-bold mx-4 opacity-75">AICHELE OFENBAU</span>
+            </div>
+        </div>
+    </section>
+    <section class="app-section">
+        <div class="container">
+            <h2 class="section-headline">Warum die meisten <span class="highlight-blue">KMUs</span> noch keine KI nutzen:</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card card-custom">
+                        <div class="card-body">
+                            <h5 class="card-title">Wo fangen wir an?</h5>
+                            <p class="card-text">Die meisten wissen einfach nicht, wo sie anfangen sollen. Oft fehlt die Zeit und die Expertise. Schließlich gibt es auch rechtliche Vorgaben die eingehalten werden müssen.</p>
+                            <a href="#" class="card-link">KI-Potenzialanalyse <i class="fas fa-chevron-right ms-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card card-custom">
+                        <div class="card-body">
+                            <h5 class="card-title">Wann lohnt es sich denn?</h5>
+                            <p class="card-text">Einfach mal loszulegen geht nicht immer gut und kostet in vielen Fällen dann auch noch richtig Geld. Im schlimmsten Fall verliert das Management an Glaubwürdigkeit.</p>
+                            <a href="#" class="card-link">KI-Strategie & Roadmap <i class="fas fa-chevron-right ms-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card card-custom">
+                        <div class="card-body">
+                            <h5 class="card-title">Was sagen die Mitarbeiter?</h5>
+                            <p class="card-text">Die Einführung scheitert in den seltensten Fällen an der Strategie oder den Lösungen. Viel häufiger werden diese Lösungen nicht akzeptiert oder einfach nicht verwendet.</p>
+                            <a href="#" class="card-link">KI-Einführung & Anwendung <i class="fas fa-chevron-right ms-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="features-section" id="features-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 position-relative mb-5 mb-lg-0">
+                    <div class="p-4 p-md-5 rounded-3 w-100 card card-custom">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <p class="text-uppercase small fw-bold mb-0 text-muted">TYPISCHER START</p>
+                            <span class="badge rounded-pill py-2 px-3" style="background-color: #e6fff3; color: #2ecc71;">
+                                Mit unserer Unterstützung</span>
+                        </div>
+                        <h2 class="fw-bolder mb-1" style="font-size: 2.5rem;">4–6 Wochen</h2>
+                        <p class="small text-muted mb-4">Von der ersten Analyse bis Sie und Ihre Mitarbeiter KI nutzen.</p>
+                        <div class="row">
+                            <div class="col-6">
+                                <p class="text-uppercase small fw-bold mb-1 text-muted">PROZESSE IM FOKUS</p>
+                                <h3 class="fw-bolder mb-1" style="font-size: 2rem;">3–5</h3>
+                                <p class="small text-muted mb-0">Wir starten mit einfachen und sinnvollen Anwendungsfällen.</p>
+                            </div>
+                            <div class="col-6">
+                                <p class="text-uppercase small fw-bold mb-1 text-muted">EINSPARPOTENZIAL</p>
+                                <h3 class="fw-bolder mb-1" style="font-size: 2rem;">15–30 %</h3>
+                                <p class="small text-muted mb-0">Durchschnittlich bei Wissensarbeit & standardisierten Supportprozessen.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 ps-lg-5">
+                    <!-- <div class="feature-label">KI pragmatisch gedacht</div> -->
+                    <h2 class="feature-headline">Microsoft, Google und Co. bieten in Ihren Business-Lizenzen bereits KI.</h2>
+                    <p class="text-muted mb-4">
+                        Wir bringen die Erfahrung aus unterschiedlichsten Branchen und Sie die Prozesse aus Ihrem Unternehmen. Mit unserem Partner-Modell bieten wir Ihnen die Garantie, die fehlende Zeit & Kompetenz in Ihrem Unternehmen schnell auszugleichen. Wir definieren die richtige Strategie und implementieren die Lösung, die wirklich zu Ihren Prozessen passt.
+                    </p>
+                    <div class="check-grid">
+                        <div class="check-item"><i class="fas fa-check"></i> Praxisnahe Expertise</div>
+                        <div class="check-item"><i class="fas fa-check"></i> Einfache Kommunikation</div>
+                        <div class="check-item"><i class="fas fa-check"></i> Zeitliche Flexibilität</div>
+                        <div class="check-item"><i class="fas fa-check"></i> Langfristiger Weitblick</div>
+                        <div class="check-item"><i class="fas fa-check"></i> Hoher Anspruch</div>
+                        <div class="check-item"><i class="fas fa-check"></i> Individuelle Gestaltung</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- <div class="bottom-cta">
+        <div class="container">
+            <p class="small fw-bold text-uppercase text-muted mb-2">LIVE-DEMONSTRATION VOR 600 UNTERNEHMERN IM PUBLIKUM!</p>
+            <h3 class="fw-bold" style="color: #333;">So leicht kann der Einsatz von <span class="highlight-blue">Künstlicher Intelligenz</span> sein:</h3>
+            <div class="mt-4">
+                <img src="https://via.placeholder.com/800x100/000000/ffffff?text=Video+Player+Placeholder" class="img-fluid rounded-bottom" alt="Video">
+            </div>
+        </div>
+    </div> -->
+    <section class="final-cta-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8 mb-5 mb-lg-0">
+                    <h2 class="fw-bold">Bereit für den Einsatz von KI in Ihrem Unternehmen?</h2>
+                    <p class="">Wir zeigen Ihnen in 30 Minuten, wo sich KI in Ihrem Unternehmen kurzfristig rechnet – konkret und umsetzbar.</p>
+                </div>
+                <div class="col-lg-4 text-center mb-3">
+                    <a href="#" class="btn btn-demo py-3 px-4">Termin vereinbaren</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="steps-section" id="steps-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-5">
+                    <h2 class="fw-bold mb-5">Noch nie war es so einfach, Künstliche Intelligenz zu nutzen:</h2>
+                    <div class="d-flex mb-4">
+                        <div class="step-circle">1</div>
+                        <div class="ms-3">
+                            <div class="step-title">Kennenlernen</div>
+                            <div class="step-text">Unverbindliche und kostenlose Erstberatung, bei der wir Potenziale erläutern, unser Vorgehen aufzeigen und natürlich auf Ihre Fragen und Anforderungen eingehen.</div>
+                        </div>
+                    </div>
+                    <div class="d-flex mb-4">
+                        <div class="step-circle">2</div>
+                        <div class="ms-3">
+                            <div class="step-title">Angebot</div>
+                            <div class="step-text">Anschließend erhalten Sie von uns ein individuelles Angebot, das maßgeschneidet auf Ihre aktuelle Situation ist und die Anforderungen die Sie haben addressiert.</div>
+                        </div>
+                    </div>
+                    <div class="d-flex mb-4">
+                        <div class="step-circle">3</div>
+                        <div class="ms-3">
+                            <div class="step-title">Startschuss</div>
+                            <div class="step-text">Der Einführung von Künstlicher Intelligenz in Ihrem Unternehmen kann nichts mehr im Weg stehen. Wir arbeiten gemeinsam an Potenzialanalyse, Strategie und Umsetzung.</div>
+                        </div>
+                    </div>
+                    <!-- <div class="mt-5">
+                        <a href="#" class="btn btn-demo py-3 px-4 w-100 w-md-auto">Jetzt unverbindlichen Demo-Call buchen</a>
+                    </div> -->
+                </div>
+                <div class="col-lg-6 offset-lg-1 mt-5 mt-lg-0">
+                    <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Team Meeting" class="img-fluid rounded shadow-lg">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="booking-section" id="booking-section">
+        <div class="container">
+            <div class="booking-wrapper">
+                <div class="row g-0">
+                    <div class="col-lg-7 booking-form-col">
+                        <h2 class="fw-bold mb-2">Kostenloses Erstgespräch anfragen</h2>
+                        <p class="text-muted mb-4">Unverbindliche und kostenlose Erstberatung, bei der wir Potenziale erläutern, unser Vorgehen nochmal aufzeigen und natürlich auf Ihre Fragen und Anforderungen eingehen.</p>
+                        <form>
+                            <div class="row g-3 mb-3">
+                                <div class="col-md-6">
+                                    <label class="form-label">Name</label>
+                                    <input type="text" class="form-control" placeholder="Vorname">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Nachname</label>
+                                    <input type="text" class="form-control" placeholder="Nachname">
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Firmenname</label>
+                                <input type="text" class="form-control" placeholder="Dein Firmenname">
+                            </div>
+                            <div class="row g-3 mb-4">
+                                <div class="col-md-6">
+                                    <label class="form-label">E-Mail-Adresse</label>
+                                    <input type="email" class="form-control" placeholder="Deine E-Mail-Adresse">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Handynummer</label>
+                                    <input type="text" class="form-control" placeholder="Deine Handynummer">
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label mb-2 d-block">Was würden Sie gerne in Ihrem Unternehmen umsetzen?</label>
+                                <div class="row g-2">
+                                    <div class="col-md-6">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="check1">
+                                            <label class="form-check-label" for="check1">KI-Potentialanalyse</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="check2">
+                                            <label class="form-check-label" for="check2">KI-Strategie & Roadmap</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="check3">
+                                            <label class="form-check-label" for="check3">KI-Einführung und Anwendung</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="check4">
+                                            <label class="form-check-label" for="check4">Sonstiges</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-4">
+                                <button type="button" class="btn btn-demo w-100 py-3">Jetzt kostenloses Erstgespräch anfragen</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-lg-5 booking-info-col">
+                        <div class="d-flex align-items-center mb-4">
+                            <img src="https://media.licdn.com/dms/image/v2/D4E03AQERGeeP6tX-CA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1669921870506?e=1766620800&v=beta&t=HbXAT8URRafjClqqvHsf5NcDbxP1etgTC1u6buXeVZw" alt="Nikita" class="profile-img-circle me-3">
+                            <div>
+                                <div class="fw-bold fs-5">Dominik Bilgery</div>
+                                <div class="small opacity-75">Gründer und Geschäftsführer</div>
+                            </div>
+                        </div>
+                        <h4 class="fw-bold mb-3">Das erwartet dich:</h4>
+                        <p class="small opacity-75 mb-3">Ich nehme mir explizit für Sie und Ihr Unternehmen 30 min Zeit.</p>
+                        <ul class="benefit-list">
+                            <li>
+                                <i class="fas fa-check"></i>
+                                <span>Wir hören uns Ihre Situation und die Herausforderungen oder Wünsche an, die Sie aktuell bewegen.</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check"></i>
+                                <span>Sie bekommen erste Ideen und Vorschläge, die Sie theoretisch jederzeit selbst umsetzen könnten.</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check"></i>
+                                <span>Wir gehen auf Ihren Fragen ein und zeigen Ihnen, wie sich Ihre Vorstellungen realisieren lassen.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- <section class="testimonials-section">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">
+                            Im Demo-Call wurde mir LearningSuite vorgestellt und ich war sofort überzeugt. Nach dem Kauf habe ich ein Strategie-Gespräch vereinbart. Innerhalb von nur 3 Tagen waren alle Daten meiner alten Plattform übertragen.
+                        </p>
+                        <div class="d-flex align-items-center mt-auto">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" alt="Michaela" class="author-img">
+                            <div>
+                                <div class="fw-bold small">Michaela Goll</div>
+                                <div class="small text-muted" style="font-size:0.75rem;">Führungs-Coachin</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">
+                            Durch den Demo-Call und der individuellen Beratung habe ich erst verstanden was LearningSuite für ein Gamechanger ist. Jetzt, 2 Monate später, arbeiten wir mit über 700 Kunden in LearningSuite und hatten vorher Kajabi genutzt.
+                        </p>
+                        <div class="d-flex align-items-center mt-auto">
+                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" alt="Patrick" class="author-img">
+                            <div>
+                                <div class="fw-bold small">Patrick Khatrao</div>
+                                <div class="small text-muted" style="font-size:0.75rem;">CEO von GoldenVoice Academy</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">
+                            LearningSuite ist die beste Online-Schulungsplattform, die wir je im Einsatz hatten. Wir bilden unsere Kunden und Mitarbeiter damit aus. Durch den Demo-Call konnten wir den Mehrwert für unser Unternehmen verstehen.
+                        </p>
+                        <div class="d-flex align-items-center mt-auto">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" alt="Pascal" class="author-img">
+                            <div>
+                                <div class="fw-bold small">R. Pascal Laub</div>
+                                <div class="small text-muted" style="font-size:0.75rem;">Head of IT bei Rayk Hahne</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+    <section class="faq-section" id="faq-section">
+        <div class="container">
+            <h2 class="text-center fw-bold mb-5">Antworten auf <span class="highlight-blue">häufig gestellte Fragen:</span></h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="accordion" id="accordionLeft">
+                        <div class="accordion-item faq-card">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1">
+                                    Ist KI nicht zu teuer für den Mittelstand?
+                                </button>
+                            </h2>
+                            <div id="collapse1" class="accordion-collapse collapse" data-bs-parent="#accordionLeft">
+                                <div class="accordion-body text-muted small">
+                                    Nein. Wir starten mit einer Potenzialanalyse, um Quick Wins zu identifizieren, deren ROI (Return on Investment) oft schon nach wenigen Monaten erreicht wird. Wir bauen keine teuren Forschungsprojekte, sondern skalierbare, wirtschaftliche Lösungen.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item faq-card">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2">
+                                    Wie lange dauert es, bis wir Ergebnisse sehen?
+                                </button>
+                            </h2>
+                            <div id="collapse2" class="accordion-collapse collapse" data-bs-parent="#accordionLeft">
+                                <div class="accordion-body text-muted small">
+                                    Nach der initialen Analyse (ca. 2 Wochen) können erste produktive KI-Anwendungsfälle in 4 bis 6 Wochen umgesetzt werden. Die Schnelligkeit ist unser Fokus, um schnelle und messbare Erfolge zu liefern.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item faq-card">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3">
+                                    Sind unsere Daten bei KI-Anwendungen sicher?
+                                </button>
+                            </h2>
+                            <div id="collapse3" class="accordion-collapse collapse" data-bs-parent="#accordionLeft">
+                                <div class="accordion-body text-muted small">
+                                    Absolut. Datenschutz und DSGVO-Konformität sind unser höchstes Gebot. Wir empfehlen Ihnen nur die Lösungen, mit denen Sie auch rechtssicher unterwegs sind, sodass Sie jederzeit die volle Kontrolle über Ihre Daten behalten.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="accordion" id="accordionRight">
+                        <div class="accordion-item faq-card">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4">
+                                    Wie können wir unsere Belegschaft mitziehen?
+                                </button>
+                            </h2>
+                            <div id="collapse4" class="accordion-collapse collapse" data-bs-parent="#accordionRight">
+                                <div class="accordion-body text-muted small">
+                                    Akzeptanz ist der Schlüssel. Wir binden Ihre Mitarbeiter von Anfang an in den Prozess ein. Unsere Dienstleistung umfasst umfassendes Change Management und Schulungen, um sicherzustellen, dass Ihr Team die KI produktiv und gerne nutzt.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item faq-card">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5">
+                                    Wie verhindern wir, dass die KI Fehler macht?
+                                </button>
+                            </h2>
+                            <div id="collapse5" class="accordion-collapse collapse" data-bs-parent="#accordionRight">
+                                <div class="accordion-body text-muted small">
+                                    Durch unser Strategie-vor-Technik-Prinzip. Wir trainieren Ihre KI ausschließlich mit den Daten und Dokumenten Ihres Unternehmens. Durch strenge Qualitätskontrolle und die Anbindung an bewährte, kontrollierbare Modelle stellen wir sicher, dass die Ergebnisse präzise, faktenbasiert und für Ihren Anwendungsfall verlässlich sind.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item faq-card">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse6">
+                                    Wie starten wir jetzt ganz konkret?
+                                </button>
+                            </h2>
+                            <div id="collapse6" class="accordion-collapse collapse" data-bs-parent="#accordionRight">
+                                <div class="accordion-body text-muted small">
+                                    Wir bieten ein kostenloses und unverbindliches Erstgespräch an, um sicherzustellen, dass unser Angebot zu Ihren Bedürfnissen passt.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <a class="navbar-brand d-flex align-items-center mb-3" href="#">
+                        <span style="font-weight: 700; font-size: 1.2rem; color: #051b35;">BILGERY <span style="font-weight: 300;">SOLUTIONS</span></span>
+                    </a>
+                    <div class="hotline-badge">
+                        <a href="tel:+49 160 9389 7667">+49 160 9389 7667</a>
+                    </div>
+                    <div class="mt-2 fw-bold small">
+                        Made in Germany
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="footer-col-title">Unternehmen</div>
+                    <ul class="footer-links">
+                        <li><a href="#">Über uns</a></li>
+                        <li><a href="#">Karriere</a></li>
+                        <li><a href="#">News</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="footer-col-title">Lösungen</div>
+                    <ul class="footer-links">
+                        <li><a href="#">Unser KI-Newsletter</a></li>
+                        <li><a href="#">Unser KI-Starterpaket</a></li>
+                        <li><a href="#">Unsere KI-Experten</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="footer-col-title">Rechtliches</div>
+                    <ul class="footer-links">
+                        <li><a href="#">Impressum</a></li>
+                        <li><a href="#">Datenschutz</a></li>
+                        <li><a href="#">AGBs</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom d-flex flex-wrap justify-content-between align-items-center">
+                <div class="mb-2 mb-md-0">
+                    <span class="me-3">Copyright © 2025 BILGERY SOLUTIONS</span>
+                    <a href="#" class="text-muted me-3 text-decoration-none">Impressum</a>
+                    <a href="#" class="text-muted me-3 text-decoration-none">Datenschutz</a>
+                    <a href="#" class="text-muted text-decoration-none">AGB</a>
+                </div>
+                <div class="d-flex align-items-center">
+                    <a href="#" class="text-muted me-3"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-muted me-3"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
