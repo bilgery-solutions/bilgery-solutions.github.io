@@ -1,1095 +1,3417 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bilgery Solutions</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --ls-dark-blue: #042344;
-            --ls-orange: #ff9e16;
-            --ls-light-bg: #f8f9fa;
-            --ls-text-gray: #555;
-            --ls-green: #2ecc71;
-        }
-
-        .highlight-blue {
-            color: #1871d3;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            color: #333;
-        }
-
-        a {
-            text-decoration: none;
-        }
-
-        /* Navbar Styling */
-        .navbar {
-            background-color: #fff;
-            padding-top: 1rem;
-            padding-bottom: 1rem;
-            backdrop-filter: saturate(180%) blur(12px);
-            background:
-                color-mix(in srgb, #ffffff 72%, transparent);
-            border-bottom: 1px solid rgba(0, 0, 0, .06);
-        }
-
-        .navbar-brand img {
-            height: 40px;
-        }
-
-        .nav-link {
-            font-weight: 500;
-            color: #333;
-            margin-right: 15px;
-        }
-
-        .btn-demo {
-            background-color: var(--ls-orange);
-            color: white;
-            font-weight: 600;
-            border-radius: 5px;
-            padding: 10px 20px;
-            border: none;
-        }
-
-        .btn-demo:hover {
-            background-color: #e68e13;
-            color: white;
-        }
-
-        .cta-color {
-            background-image: linear-gradient(135deg, #f98e1d, #ffac3b);
-            transition: all .3s
-        }
-
-        .cta-color:hover {
-            background-image: linear-gradient(135deg, #ed8312, #f9a22c)
-        }
-
-        /* Hero Section Styling */
-        .hero-section {
-            background-color: var(--ls-dark-blue);
-            color: white;
-            padding: 80px 0 80px 0;
-            margin-top: 76px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-headline {
-            font-size: 2.8rem;
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 20px;
-        }
-
-        .hero-sub {
-            font-size: 1.1rem;
-            opacity: 0.9;
-            margin-bottom: 30px;
-            line-height: 1.6;
-        }
-
-        .hero-checks li {
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-        }
-
-        .hero-checks i {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 5px;
-            border-radius: 4px;
-            margin-right: 10px;
-            font-size: 0.8rem;
-        }
-
-        .play-link {
-            color: white;
-            text-decoration: none;
-            font-weight: 600;
-            margin-left: 20px;
-            display: inline-flex;
-            align-items: center;
-        }
-
-        .play-link i {
-            margin-right: 8px;
-        }
-
-        /* Logos Section */
-        .logo-section {
-            background-color: var(--ls-dark-blue);
-            color: white;
-            padding-bottom: 60px;
-            text-align: center;
-        }
-
-        .logo-text {
-            opacity: 0.7;
-            margin-bottom: 30px;
-            font-size: 0.9rem;
-        }
-
-        .logo-row img {
-            height: 30px;
-            filter: brightness(0) invert(1);
-            /* Macht Logos weiß */
-            opacity: 0.8;
-            margin: 0 20px;
-        }
-
-        /* Application/Cards Section */
-        .app-section {
-            padding: 80px 0;
-            background-color: #f9f9f9;
-        }
-
-        .section-headline {
-            font-weight: 700;
-            margin-bottom: 50px;
-            text-align: center;
-        }
-
-        .card-custom {
-            border: none;
-            border-radius: 12px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s;
-            height: 100%;
-        }
-
-        .card-custom:hover {
-            transform: translateY(-5px);
-        }
-
-        .card-img-top {
-            border-top-left-radius: 12px;
-            border-top-right-radius: 12px;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .card-body {
-            padding: 30px;
-        }
-
-        .card-title {
-            font-weight: 700;
-            margin-bottom: 15px;
-        }
-
-        .card-text {
-            font-size: 0.95rem;
-            color: var(--ls-text-gray);
-            margin-bottom: 20px;
-        }
-
-        .card-link {
-            text-decoration: none;
-            color: #2b7de0;
-            font-weight: 600;
-        }
-
-        /* Features Section */
-        .features-section {
-            padding: 100px 0;
-            background-color: white;
-        }
-
-        .feature-label {
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            color: #666;
-            margin-bottom: 15px;
-            display: inline-block;
-            border-left: 3px solid #2b7de0;
-            padding-left: 10px;
-        }
-
-        .feature-headline {
-            font-weight: 700;
-            font-size: 2rem;
-            margin-bottom: 20px;
-        }
-
-        .check-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin-top: 30px;
-        }
-
-        .check-item {
-            display: flex;
-            align-items: center;
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-
-        .check-item i {
-            color: white;
-            background-color: var(--ls-green);
-            border-radius: 50%;
-            padding: 4px;
-            font-size: 0.6rem;
-            margin-right: 10px;
-        }
-
-        /* Trustpilot Badge Simulation */
-        .trustpilot-badge {
-            background: white;
-            padding: 10px 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            position: absolute;
-            bottom: 20px;
-            left: 20px;
-            max-width: 200px;
-        }
-
-        .stars {
-            color: #00b67a;
-        }
-
-        /* Bottom CTA */
-        .bottom-cta {
-            background-color: #f4f6f8;
-            padding: 60px 0;
-            text-align: center;
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 991px) {
-            .hero-headline {
-                font-size: 2rem;
-            }
-
-            .hero-img-container {
-                margin-top: 50px;
-            }
-        }
-
-        /* --- Styles für die neuen Sektionen --- */
-        /* Steps Sektion */
-        .steps-section {
-            padding: 100px 0;
-            background-color: white;
-        }
-
-        .step-circle {
-            width: 40px;
-            height: 40px;
-            background-color: var(--ls-dark-blue);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 1.1rem;
-            flex-shrink: 0;
-        }
-
-        .step-title {
-            font-weight: 700;
-            font-size: 1.1rem;
-            margin-bottom: 5px;
-            color: #333;
-        }
-
-        .step-text {
-            font-size: 0.9rem;
-            color: var(--ls-text-gray);
-            line-height: 1.5;
-        }
-
-        /* FAQ Sektion */
-        .faq-section {
-            background-color: #f8f9fa;
-            /* Leichtes Grau */
-            padding: 80px 0;
-        }
-
-        .faq-card {
-            background: white;
-            border: none;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
-        }
-
-        .accordion-button {
-            background-color: white;
-            color: #333;
-            font-weight: 600;
-            border-radius: 8px !important;
-            /* Wichtig für Bootstrap Override */
-            box-shadow: none !important;
-            padding: 20px;
-        }
-
-        .accordion-button:not(.collapsed) {
-            background-color: white;
-            color: var(--ls-dark-blue);
-        }
-
-        /* Entfernt den Standard-Rahmen von Bootstrap Accordions */
-        .accordion-item {
-            border: none;
-            background: transparent;
-        }
-
-        /* Finaler CTA Banner (Blau) */
-        .final-cta-section {
-            background-color: var(--ls-dark-blue);
-            color: white;
-            padding-top: 60px;
-            padding-bottom: 40px;
-            overflow: hidden;
-        }
-
-        .final-cta-img {
-            margin-bottom: -10px;
-        }
-
-        /* Footer Styling */
-        footer {
-            background-color: white;
-            padding-top: 60px;
-            font-size: 0.9rem;
-            color: #333;
-        }
-
-        .footer-col-title {
-            color: #999;
-            font-size: 0.85rem;
-            margin-bottom: 20px;
-        }
-
-        .footer-links {
-            list-style: none;
-            padding: 0;
-        }
-
-        .footer-links li {
-            margin-bottom: 10px;
-        }
-
-        .footer-links a {
-            color: #333;
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        .footer-links a:hover {
-            color: var(--ls-orange);
-        }
-
-        .hotline-badge {
-            background-color: #eef5ff;
-            color: #2b7de0;
-            padding: 8px 15px;
-            border-radius: 5px;
-            font-weight: 600;
-            display: inline-block;
-            margin: 15px 0;
-        }
-
-        .footer-bottom {
-            border-top: 1px solid #eee;
-            padding: 30px 0;
-            margin-top: 50px;
-            font-size: 0.8rem;
-            color: #666;
-        }
-
-        /* --- Booking & Testimonials Styles --- */
-        .booking-section {
-            padding: 80px 0;
-            background-color: #f9f9f9;
-        }
-
-        /* Der weiße/blaue Container */
-        .booking-wrapper {
-            background-color: white;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-            overflow: hidden;
-            /* Damit die Ecken auch beim blauen Hintergrund rund bleiben */
-        }
-
-        /* Linke Seite (Formular) */
-        .booking-form-col {
-            padding: 40px;
-        }
-
-        .form-label {
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: #888;
-            margin-bottom: 5px;
-        }
-
-        .form-control {
-            padding: 12px;
-            border: 1px solid #e0e0e0;
-            border-radius: 6px;
-            background-color: #f8f9fa;
-        }
-
-        .form-control:focus {
-            box-shadow: none;
-            border-color: var(--ls-orange);
-            background-color: white;
-        }
-
-        .flag-icon {
-            background-color: #f8f9fa;
-            border: 1px solid #e0e0e0;
-            border-right: none;
-        }
-
-        /* Checkboxen Styling */
-        .form-check-input {
-            width: 1.3em;
-            height: 1.3em;
-            margin-top: 0.1em;
-            border: 1px solid #ccc;
-        }
-
-        .form-check-input:checked {
-            background-color: var(--ls-orange);
-            border-color: var(--ls-orange);
-        }
-
-        .form-check-label {
-            font-size: 0.95rem;
-            color: #444;
-            padding-top: 2px;
-        }
-
-        /* Rechte Seite (Blau / Info) */
-        .booking-info-col {
-            background-color: var(--ls-dark-blue);
-            color: white;
-            padding: 40px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .profile-img-circle {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .benefit-list {
-            list-style: none;
-            padding: 0;
-            margin-top: 20px;
-        }
-
-        .benefit-list li {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 20px;
-            font-size: 0.95rem;
-            line-height: 1.5;
-        }
-
-        .benefit-list i {
-            background-color: rgba(255, 255, 255, 0.15);
-            min-width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 15px;
-            font-size: 0.7rem;
-            margin-top: 2px;
-        }
-
-        /* Testimonials Section */
-        .testimonials-section {
-            padding: 60px 0 100px 0;
-            background-color: #fff;
-            /* Oder leichtes Grau, je nach Wunsch */
-        }
-
-        .testimonial-card {
-            background-color: #f9f9f9;
-            padding: 30px;
-            border-radius: 12px;
-            height: 100%;
-        }
-
-        .testimonial-stars {
-            color: var(--ls-orange);
-            /* Sterne in Orange */
-            margin-bottom: 15px;
-            font-size: 0.9rem;
-        }
-
-        .testimonial-text {
-            font-size: 0.95rem;
-            line-height: 1.6;
-            color: #333;
-            margin-bottom: 20px;
-        }
-
-        .author-img {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-right: 15px;
-        }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Professionelle Websites aus Stuttgart | Bilgery Solutions</title>
+<meta name="description" content="Bilgery Solutions entwickelt professionelle Unternehmenswebsites und Relaunches in Stuttgart – individuell gestaltet, technisch sauber und auf neue Anfragen ausgerichtet.">
+<meta name="theme-color" content="#111a24">
+
+  <link rel="canonical" href="https://bilgery-solutions.de/">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="author" content="Bilgery Solutions GmbH">
+  <meta name="format-detection" content="telephone=no">
+
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:site_name" content="Bilgery Solutions">
+  <meta property="og:title" content="Professionelle Websites aus Stuttgart | Bilgery Solutions">
+  <meta property="og:description" content="Individuelle Unternehmenswebsites und Relaunches aus Stuttgart – klar konzipiert, hochwertig gestaltet und technisch sauber umgesetzt.">
+  <meta property="og:url" content="https://bilgery-solutions.de/">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1635151227785-429f420c6b9d?q=80&w=2264&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Professionelle Websites aus Stuttgart | Bilgery Solutions">
+  <meta name="twitter:description" content="Individuelle Unternehmenswebsites und Relaunches aus Stuttgart – klar konzipiert, hochwertig gestaltet und technisch sauber umgesetzt.">
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1635151227785-429f420c6b9d?q=80&w=2264&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
+  <link rel="preload" as="image" href="https://images.unsplash.com/photo-1635151227785-429f420c6b9d?q=80&w=2264&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" fetchpriority="high">
+
+<style>
+:root{--ink:#172335;--text:#4f5b67;--muted:#7a838c;--line:#dcdfe2;--soft:#f5f5f2;--paper:#fff;--dark:#111a25;--max:1280px;--pad:clamp(1.15rem,3.8vw,3.75rem);--section:clamp(7rem,9vw,9rem);--ease:cubic-bezier(.22,.78,.22,1)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#f2f2ef;color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}a{color:inherit;text-decoration:none}.wrap{width:min(100%,var(--max));margin:0 auto;padding-inline:var(--pad)}
+.hero{padding:clamp(.65rem,1.8vw,1.4rem) 0 clamp(4.75rem,7vw,6rem)}.hero-shell{width:100%;padding-inline:clamp(.65rem,1.8vw,1.4rem)}.hero-stage{position:relative;overflow:hidden;height:calc(100svh - clamp(1.3rem,3.6vw,2.8rem));min-height:760px;border-radius:30px;color:#fff;isolation:isolate;background:linear-gradient(90deg,rgba(9,13,19,.88) 0%,rgba(9,13,19,.68) 30%,rgba(9,13,19,.38) 56%,rgba(9,13,19,.20) 100%),linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,0)),url("https://images.unsplash.com/photo-1635151227785-429f420c6b9d?q=80&w=2264&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D") center/cover no-repeat;box-shadow:0 24px 56px rgba(15,22,30,.10)}.hero-stage:before{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;background:radial-gradient(920px 420px at 56% 10%,rgba(255,255,255,.08),rgba(255,255,255,0) 58%),radial-gradient(680px 360px at 84% 8%,rgba(92,122,149,.16),rgba(92,122,149,0) 58%)}.hero-nav{position:absolute;inset:0 0 auto 0;z-index:10;height:98px;padding:0 clamp(1.8rem,3vw,3.1rem);display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.16)}.brand{display:inline-flex;align-items:baseline;gap:.45rem;white-space:nowrap;letter-spacing:.08em;text-transform:uppercase}.brand strong,.brand span{font-size:clamp(1.22rem,1.8vw,1.7rem)}.brand strong{font-weight:800}.brand span{font-weight:300}.nav-links{display:flex;align-items:center;gap:2rem;font-size:clamp(.96rem,.95vw,1.06rem);color:rgba(255,255,255,.92)}.nav-links>a{position:relative;z-index:12;transition:transform .2s ease}.nav-links>a:hover{transform:translateY(-1px)}.nav-cta{display:inline-flex;align-items:center;gap:.5rem;padding:.76rem .98rem;border:1px solid rgba(255,255,255,.22);border-radius:10px;background:rgba(255,255,255,.14);backdrop-filter:blur(10px);font-size:.91rem;font-weight:600}.hero-content{position:relative;z-index:2;display:flex;align-items:center;min-height:100%;padding:calc(98px + clamp(2rem,4vh,3rem)) clamp(2.6rem,5.6vw,5.8rem) clamp(2.6rem,4.5vh,3.4rem) clamp(3.7rem,7.8vw,7.6rem)}.hero-copy{max-width:880px}.hero-kicker{margin-bottom:1.65rem;color:rgba(255,255,255,.74);font-size:clamp(.96rem,.95vw,1.08rem);letter-spacing:.16em;text-transform:uppercase}.hero-copy h1{margin:0;font-size:clamp(5.2rem,7.4vw,8rem);line-height:.95;letter-spacing:-.02em;font-weight:700;max-width:10.6ch;text-wrap:balance}.hero-line{display:block;white-space:nowrap}.hero-copy>p{margin:1.9rem 0 0;max-width:35rem;color:rgba(255,255,255,.84);font-size:clamp(1.12rem,1.15vw,1.32rem);line-height:1.58}.hero-actions{display:flex;align-items:center;flex-wrap:wrap;gap:1rem;margin-top:2.25rem}.hero-btn{display:inline-flex;align-items:center;gap:.75rem;padding:1rem 1.35rem;border-radius:10px;background:#fff;color:#11151b;font-size:1rem;font-weight:600;box-shadow:0 8px 20px rgba(0,0,0,.12)}.hero-link{display:inline-flex;align-items:center;gap:.65rem;padding-bottom:.15rem;border-bottom:1px solid rgba(255,255,255,.45);font-size:.96rem;font-weight:600}
+.section{padding:var(--section) 0;background:var(--paper)}.section.soft{background:var(--soft)}.section.dark{background:var(--dark);color:#fff}.section-head{max-width:760px;margin-bottom:clamp(3.5rem,5vw,5rem)}.eyebrow{display:block;margin-bottom:1rem;color:var(--muted);font-size:.72rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase}.dark .eyebrow{color:#8f9dab}.section-head h2{margin:0;color:var(--ink);font-size:clamp(3rem,4.7vw,5rem);line-height:1;letter-spacing:-.035em;font-weight:700;max-width:11ch}.dark .section-head h2{color:#fff}.section-head p{margin:1.4rem 0 0;color:var(--text);font-size:1.06rem;line-height:1.7;max-width:42rem}.dark .section-head p{color:#aeb8c2}
+.process{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.process-step{padding:2rem 2.25rem 2.25rem 0;min-height:365px;border-right:1px solid var(--line);display:flex;flex-direction:column;justify-content:space-between}.process-step:nth-child(2),.process-step:nth-child(3){padding-left:2.25rem}.process-step:last-child{border-right:0}.step-no{color:#9aa2aa;font-size:.7rem}.process-step h3{margin:0 0 .8rem;font-size:1.55rem;letter-spacing:-.02em}.process-step p{margin:0 0 1.5rem;color:var(--text);line-height:1.65}.mini-list{list-style:none;margin:0;padding:0;display:grid;gap:.6rem;color:#66717b;font-size:.9rem}.mini-list li:before{content:"✓";margin-right:.65rem;color:var(--ink);font-weight:700}
+.included{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(4rem,8vw,8rem);align-items:start}.included-copy{position:sticky;top:3rem;max-width:460px}.included-copy h2{margin:0;color:var(--ink);font-size:clamp(3rem,4.4vw,4.8rem);line-height:1;letter-spacing:-.035em;max-width:9ch}.included-copy p{margin:1.4rem 0 0;color:var(--text);line-height:1.7;font-size:1.04rem}.included-list{border-top:1px solid var(--line)}.included-item{display:grid;grid-template-columns:34px 1fr;gap:1rem;padding:1.45rem 0;border-bottom:1px solid var(--line)}.included-item>span{color:#9aa2aa;font-size:.68rem;padding-top:.2rem}.included-item h3{margin:0 0 .4rem;font-size:1.17rem;font-weight:650;letter-spacing:-.015em}.included-item p{margin:0;color:var(--text);line-height:1.6;font-size:.95rem}
+.concepts-intro{display:flex;justify-content:space-between;gap:3rem;align-items:end;margin-bottom:3rem}.concepts-intro .section-head{margin:0}.concept-note{max-width:340px;color:#8e9aa6;font-size:.84rem;line-height:1.55;text-align:right}.concept{margin-top:1.5rem}.concept:first-of-type{margin-top:0}.concept-visual{position:relative;min-height:620px;overflow:hidden;border-radius:18px;border:1px solid rgba(255,255,255,.13);background:#172333}.concept-one{background:linear-gradient(90deg,rgba(4,7,10,.46),rgba(4,7,10,.10)),url("https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?q=80&w=2000&auto=format&fit=crop") center/cover no-repeat}.concept-top{position:absolute;left:4%;right:4%;top:5%;display:flex;justify-content:space-between;color:#fff;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase}.concept-hero{position:absolute;left:6%;bottom:10%;color:#fff}.concept-hero span{display:block;margin-bottom:1rem;color:rgba(255,255,255,.72);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase}.concept-hero strong{display:block;max-width:8ch;font-size:clamp(4rem,6.2vw,7rem);line-height:.91;letter-spacing:-.045em}.concept-two{background:#e9e7e1}.concept-two:before{content:"";position:absolute;inset:6%;background:linear-gradient(rgba(255,255,255,.80),rgba(255,255,255,.80)),url("https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1800&auto=format&fit=crop") center/cover no-repeat;box-shadow:0 25px 70px rgba(0,0,0,.10)}.concept-two-title{position:absolute;left:10%;top:14%;max-width:8ch;color:#1c2631;font-size:clamp(3.8rem,6vw,6.5rem);line-height:.93;letter-spacing:-.045em;font-weight:600}.concept-two-copy{position:absolute;left:10%;bottom:14%;width:min(380px,34%);color:#4f5a64;font-size:.95rem;line-height:1.6}.concept-meta{display:grid;grid-template-columns:160px 1fr;gap:2rem;padding:1.5rem 0 3rem;color:#aeb8c1;border-bottom:1px solid rgba(255,255,255,.12)}.concept-meta:last-child{padding-bottom:0;border-bottom:0}.concept-meta span{font-size:.7rem;color:#7f8d9b;text-transform:uppercase;letter-spacing:.11em}.concept-meta p{margin:0;max-width:720px;line-height:1.6}
+.trust{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.trust-item{min-height:220px;padding:1.8rem 2rem 2rem 0;border-right:1px solid var(--line);display:flex;flex-direction:column;justify-content:space-between}.trust-item:nth-child(2),.trust-item:nth-child(3){padding-left:2rem}.trust-item:last-child{border-right:0}.trust-item span{color:#9aa2aa;font-size:.7rem}.trust-item h3{margin:0 0 .6rem;font-size:1.3rem;letter-spacing:-.02em}.trust-item p{margin:0;color:var(--text);line-height:1.6;font-size:.94rem}
+
+.offer-section{padding:clamp(4.8rem,6.5vw,6.5rem) 0;background:var(--dark);color:#fff}
+.offer-compact{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:clamp(2rem,5vw,5rem);align-items:end;padding-top:2.2rem;border-top:1px solid rgba(255,255,255,.14)}
+.offer-compact h2{margin:0;max-width:12ch;font-size:clamp(2.6rem,3.8vw,4rem);line-height:1;letter-spacing:-.035em}
+.offer-compact p{margin:1.1rem 0 0;max-width:42rem;color:#aeb8c2;line-height:1.7;font-size:1rem}
+.offer-actions{display:grid;justify-items:start;gap:.75rem}
+.offer-button{appearance:none;border:0;cursor:pointer;display:inline-flex;align-items:center;justify-content:space-between;gap:1.6rem;min-width:250px;padding:1rem 1.05rem;border-radius:9px;background:#fff;color:#111923;font-weight:650;font-size:.93rem}
+.offer-hint{color:#8090a0;font-size:.76rem}
+.offer-label{display:block;margin-bottom:1rem;color:#8f9dab;font-size:.72rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase}
+
+.project-dialog{width:min(720px,calc(100% - 2rem));max-height:min(860px,calc(100svh - 2rem));padding:0;border:0;border-radius:18px;background:#fff;color:var(--ink);box-shadow:0 28px 90px rgba(0,0,0,.28);overflow:hidden}
+.project-dialog::backdrop{background:rgba(8,13,19,.72);backdrop-filter:blur(6px)}
+.wizard{display:flex;flex-direction:column;min-height:560px}
+.wizard-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.15rem 1.3rem;border-bottom:1px solid var(--line)}
+.wizard-brand{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:#6e7882;font-weight:700}
+.wizard-close{appearance:none;border:0;background:transparent;color:#65707a;cursor:pointer;font-size:1.5rem;line-height:1;padding:.2rem}
+.wizard-progress{height:3px;background:#eef0f1}
+.wizard-progress-bar{height:100%;width:20%;background:var(--ink);transition:width .3s var(--ease)}
+.wizard-body{flex:1;padding:clamp(2rem,5vw,3.4rem)}
+.wizard-step{display:none}
+.wizard-step.active{display:block;animation:wizardIn .35s var(--ease)}
+@keyframes wizardIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.wizard-step-label{display:block;margin-bottom:1rem;color:#8a939c;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700}
+.wizard-step h3{margin:0 0 .7rem;font-size:clamp(2rem,4vw,2.8rem);line-height:1.05;letter-spacing:-.03em}
+.wizard-step>p{margin:0 0 1.8rem;color:#69747e;line-height:1.6}
+.choice-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.75rem}
+.choice{position:relative}
+.choice input{position:absolute;opacity:0;pointer-events:none}
+.choice label{display:flex;min-height:78px;align-items:center;padding:1rem 1.05rem;border:1px solid #d9dde0;border-radius:10px;cursor:pointer;color:#34414d;font-weight:550;transition:border-color .2s ease,background .2s ease,transform .2s var(--ease)}
+.choice label:hover{transform:translateY(-1px);border-color:#aab2b9}
+.choice input:checked+label{border-color:var(--ink);background:#f3f5f6;color:var(--ink)}
+.field-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
+.field{display:grid;gap:.45rem}
+.field.full{grid-column:1/-1}
+.field label{font-size:.78rem;font-weight:650;color:#5e6973}
+.field input{width:100%;border:1px solid #d8dde0;border-radius:9px;padding:.9rem .95rem;color:var(--ink);background:#fff;outline:none}
+.field input:focus{border-color:#7c8791;box-shadow:0 0 0 3px rgba(23,35,53,.07)}
+.wizard-actions{display:flex;justify-content:space-between;gap:1rem;padding:1rem 1.3rem 1.3rem;border-top:1px solid var(--line)}
+.wizard-back,.wizard-next{appearance:none;cursor:pointer;border-radius:9px;padding:.85rem 1rem;font-weight:650;font-size:.9rem}
+.wizard-back{border:1px solid #d8dde0;background:#fff;color:#4f5a64}
+.wizard-next{border:1px solid var(--ink);background:var(--ink);color:#fff;margin-left:auto}
+.wizard-back[hidden]{display:none}
+.wizard-summary{padding:1rem;border-radius:10px;background:#f5f6f6;color:#5d6872;font-size:.88rem;line-height:1.6;margin-bottom:1.3rem}
+
+.faq{border-top:1px solid var(--line)}.faq details{border-bottom:1px solid var(--line)}.faq summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:1fr 28px;gap:1.5rem;align-items:center;padding:1.45rem 0;font-weight:600;font-size:1.03rem}.faq summary::-webkit-details-marker{display:none}.faq summary span{font-size:1.5rem;font-weight:300;text-align:right;transition:transform .2s ease}.faq details[open] summary span{transform:rotate(45deg)}.faq p{margin:0;padding:0 3rem 1.5rem 0;max-width:720px;color:var(--text);line-height:1.65;font-size:.96rem}
+.final{padding:clamp(7rem,10vw,10rem) 0;background:#eef0f1}.final-grid{display:grid;grid-template-columns:1.1fr .7fr;gap:clamp(4rem,8vw,8rem);align-items:end}.final h2{margin:0;max-width:7.2ch;font-size:clamp(4.2rem,7vw,7.8rem);line-height:.91;letter-spacing:-.04em}.final-side p{margin:0 0 1.6rem;color:#5f6b76;line-height:1.7;font-size:1.04rem}.final-btn{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;width:min(100%,420px);padding:1rem 1.1rem;border-radius:9px;background:var(--ink);color:#fff;font-weight:650;font-size:.93rem}.final-side small{display:block;margin-top:.9rem;color:#8c959d;font-size:.77rem}footer{padding:1.4rem 0 1.8rem;background:#eef0f1;border-top:1px solid rgba(20,34,53,.10);color:#7a838c;font-size:.72rem}.footer-inner{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}.footer-links{display:flex;gap:1rem}.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s var(--ease),transform .7s var(--ease)}.reveal.in{opacity:1;transform:none}
+@media(max-width:1000px){.process{grid-template-columns:1fr}.process-step,.process-step:nth-child(2),.process-step:nth-child(3){min-height:auto;padding:1.8rem 0;border-right:0;border-bottom:1px solid var(--line)}.process-step:last-child{border-bottom:0}.step-no{margin-bottom:3rem}.included{grid-template-columns:1fr;gap:3rem}.included-copy{position:static;max-width:720px}.concepts-intro{display:block}.concept-note{margin-top:1.5rem;max-width:600px;text-align:left}.offer-compact,.final-grid{grid-template-columns:1fr}.offer-actions{margin-top:.3rem}}
+@media(max-width:780px){:root{--pad:1.15rem;--section:4.8rem}.hero{padding:.45rem 0 4rem}.hero-shell{padding-inline:.45rem}.hero-stage{height:auto;min-height:clamp(680px,88svh,760px);border-radius:18px;background-position:62% center}.hero-nav{height:72px;padding:0 1rem}.brand{gap:.3rem}.brand strong,.brand span{font-size:1rem}.nav-links>a:not(.nav-cta){display:none}.nav-links{gap:.7rem}.nav-cta{padding:.65rem .8rem;font-size:.8rem}.hero-content{align-items:flex-end;min-height:100%;padding:calc(72px + 2.2rem) 1.2rem 1.5rem}.hero-copy{width:100%;max-width:100%}.hero-kicker{margin-bottom:1.2rem;font-size:.8rem}.hero-copy h1{font-size:clamp(3.35rem,14.4vw,4.85rem);line-height:.95;letter-spacing:-.02em;max-width:10.6ch}.hero-copy>p{margin-top:1.35rem;max-width:20rem;font-size:1rem}.hero-actions{align-items:flex-start;flex-direction:column;gap:.9rem;margin-top:1.8rem}.hero-btn{padding:.85rem 1rem;font-size:.92rem}.hero-link{font-size:.88rem}.section-head{margin-bottom:3rem}.section-head h2,.included-copy h2{font-size:clamp(2.9rem,12.8vw,4.15rem)}.section-head p,.included-copy p{margin-top:1.2rem;font-size:1rem}.process-step,.process-step:nth-child(2),.process-step:nth-child(3){padding:1.5rem 0 1.65rem}.step-no{margin-bottom:2.5rem}.process-step h3{font-size:1.5rem}.included{gap:2.7rem}.included-item{padding:1.3rem 0}.included-item h3{font-size:1.08rem}.concept-note{font-size:.8rem}.concept-visual{min-height:430px;border-radius:14px}.concept-top{left:6%;right:6%;top:5%;font-size:.53rem}.concept-hero{left:7%;bottom:8%}.concept-hero strong{font-size:clamp(3.1rem,14vw,4.5rem)}.concept-two:before{inset:5%}.concept-two-title{left:9%;top:11%;font-size:clamp(3rem,13vw,4.4rem)}.concept-two-copy{left:9%;bottom:10%;width:74%;font-size:.88rem}.concept-meta{grid-template-columns:1fr;gap:.6rem;padding:1.1rem 0 2.2rem}.trust{grid-template-columns:1fr}.trust-item,.trust-item:nth-child(2),.trust-item:nth-child(3){min-height:auto;padding:1.4rem 0 1.55rem;border-right:0;border-bottom:1px solid var(--line)}.trust-item:last-child{border-bottom:0}.trust-item span{margin-bottom:2rem}.offer-section{padding:4.2rem 0}.offer-compact{grid-template-columns:1fr;gap:2rem;padding-top:1.8rem}.offer-compact h2{font-size:clamp(2.55rem,11vw,3.7rem)}.offer-button{width:100%;min-width:0}.project-dialog{width:calc(100% - .9rem);max-height:calc(100svh - .9rem);border-radius:14px}.wizard{min-height:calc(100svh - .9rem)}.wizard-body{padding:1.5rem 1.15rem}.choice-grid,.field-grid{grid-template-columns:1fr}.choice label{min-height:64px}.wizard-actions{padding:.9rem 1rem 1rem}.faq summary{font-size:.97rem}.faq p{padding-right:0}.final{padding:5.5rem 0}.final-grid{gap:2.8rem}.final h2{font-size:clamp(4rem,16vw,5.6rem)}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}.reveal{opacity:1;transform:none}}
+
+/* ===== V26 CONTENT REFINEMENT ===== */
+.anchor-target{position:absolute;transform:translateY(-110px)}
+
+.process-four{grid-template-columns:repeat(4,minmax(0,1fr))}
+.process-four .process-step{min-height:420px;padding-right:1.6rem}
+.process-four .process-step:nth-child(2),
+.process-four .process-step:nth-child(3),
+.process-four .process-step:nth-child(4){padding-left:1.6rem}
+.process-four .process-step:nth-child(3){border-right:1px solid var(--line)}
+.process-four .process-step:nth-child(4){border-right:0}
+.process-result{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.65rem 1.7rem;
+  align-items:center;
+  margin-top:2rem;
+  color:#69737d;
+  font-size:.88rem;
+}
+.process-result strong{color:var(--ink)}
+.process-result span:not(:last-child)::after{
+  content:"·";
+  margin-left:1.7rem;
+  color:#a3aab1;
+}
+
+.case-details{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  border-bottom:1px solid rgba(255,255,255,.12);
+}
+.case-details>div{
+  padding:1.65rem 2rem 2rem 0;
+  border-right:1px solid rgba(255,255,255,.12);
+}
+.case-details>div:nth-child(2),
+.case-details>div:nth-child(3){padding-left:2rem}
+.case-details>div:last-child{border-right:0}
+.case-details span{
+  display:block;
+  margin-bottom:1.25rem;
+  color:#7f8d9b;
+  font-size:.68rem;
+  text-transform:uppercase;
+  letter-spacing:.11em;
+}
+.case-details p{
+  margin:0;
+  color:#aeb8c1;
+  line-height:1.62;
+  font-size:.92rem;
+}
+
+.trust-combined{
+  display:grid;
+  grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);
+  gap:clamp(4rem,8vw,8rem);
+  align-items:start;
+}
+.trust-copy{
+  position:sticky;
+  top:3rem;
+}
+.trust-copy h2{
+  margin:0;
+  max-width:10ch;
+  color:var(--ink);
+  font-size:clamp(3rem,4.4vw,4.8rem);
+  line-height:1;
+  letter-spacing:-.035em;
+}
+.trust-copy>p{
+  margin:1.35rem 0 0;
+  max-width:31rem;
+  color:var(--text);
+  line-height:1.7;
+}
+.founder-line{
+  display:grid;
+  gap:.28rem;
+  margin-top:2.2rem;
+  padding-top:1.25rem;
+  border-top:1px solid var(--line);
+  max-width:31rem;
+}
+.founder-line strong{
+  font-size:.96rem;
+  color:var(--ink);
+}
+.founder-line span{
+  color:#7c858e;
+  font-size:.82rem;
+}
+.trust-list-new{
+  border-top:1px solid var(--line);
+}
+.trust-row{
+  display:grid;
+  grid-template-columns:38px 1fr;
+  gap:1rem;
+  padding:1.65rem 0;
+  border-bottom:1px solid var(--line);
+}
+.trust-row>span{
+  color:#9aa2aa;
+  font-size:.68rem;
+  padding-top:.25rem;
+}
+.trust-row h3{
+  margin:0 0 .55rem;
+  color:var(--ink);
+  font-size:1.22rem;
+  line-height:1.25;
+  letter-spacing:-.018em;
+}
+.trust-row p{
+  margin:0;
+  max-width:38rem;
+  color:var(--text);
+  line-height:1.64;
+  font-size:.95rem;
+}
+
+@media(max-width:1100px){
+  .process-four{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .process-four .process-step,
+  .process-four .process-step:nth-child(2),
+  .process-four .process-step:nth-child(3),
+  .process-four .process-step:nth-child(4){
+    min-height:330px;
+    padding:1.8rem 1.8rem 1.9rem 0;
+    border-right:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+  }
+  .process-four .process-step:nth-child(2),
+  .process-four .process-step:nth-child(4){
+    padding-left:1.8rem;
+    border-right:0;
+  }
+  .process-four .process-step:nth-child(3),
+  .process-four .process-step:nth-child(4){border-bottom:0}
+  .trust-combined{grid-template-columns:1fr;gap:3rem}
+  .trust-copy{position:static;max-width:720px}
+}
+
+@media(max-width:780px){
+  .process-four{grid-template-columns:1fr}
+  .process-four .process-step,
+  .process-four .process-step:nth-child(2),
+  .process-four .process-step:nth-child(3),
+  .process-four .process-step:nth-child(4){
+    min-height:auto;
+    padding:1.5rem 0 1.65rem;
+    border-right:0;
+    border-bottom:1px solid var(--line);
+  }
+  .process-four .process-step:last-child{border-bottom:0}
+  .process-result{
+    display:grid;
+    gap:.5rem;
+    margin-top:1.6rem;
+  }
+  .process-result span:not(:last-child)::after{display:none}
+
+  .case-details{grid-template-columns:1fr}
+  .case-details>div,
+  .case-details>div:nth-child(2),
+  .case-details>div:nth-child(3){
+    padding:1.25rem 0 1.45rem;
+    border-right:0;
+    border-bottom:1px solid rgba(255,255,255,.12);
+  }
+  .case-details>div:last-child{border-bottom:0}
+  .case-details span{margin-bottom:.7rem}
+
+  .trust-combined{gap:2.6rem}
+  .trust-copy h2{
+    font-size:clamp(2.9rem,12.8vw,4.15rem);
+  }
+  .founder-line{margin-top:1.7rem}
+  .trust-row{padding:1.35rem 0}
+}
+
+
+/* ===== V27 STRATEGY + FORMS ===== */
+
+.process-reassurance{
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:.5rem 1rem;
+  align-items:baseline;
+  margin-top:1.2rem;
+  padding-top:1.2rem;
+  border-top:1px solid var(--line);
+  color:#707a84;
+  font-size:.88rem;
+  line-height:1.55;
+}
+.process-reassurance strong{color:var(--ink);font-weight:650}
+
+.offer-direct-link{
+  color:#8f9eac;
+  font-size:.78rem;
+  line-height:1.4;
+}
+.offer-direct-link strong{
+  color:#d9e0e6;
+  font-weight:600;
+}
+.offer-direct-link:hover strong{color:#fff}
+
+.botcheck{
+  position:absolute!important;
+  opacity:0!important;
+  pointer-events:none!important;
+  width:1px!important;
+  height:1px!important;
+}
+
+.wizard-subblock{margin-top:.25rem}
+.wizard-subtitle{
+  display:block;
+  margin-bottom:.7rem;
+  color:#66717b;
+  font-size:.76rem;
+  font-weight:650;
+}
+.compact-choices .choice label{min-height:64px}
+.wizard-inline-fields{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:1rem;
+  margin-top:1.35rem;
+}
+.field label span{
+  color:#9aa2aa;
+  font-weight:400;
+}
+.field select,
+.field textarea{
+  width:100%;
+  border:1px solid #d8dde0;
+  border-radius:9px;
+  padding:.9rem .95rem;
+  color:var(--ink);
+  background:#fff;
+  outline:none;
+  resize:vertical;
+}
+.field select:focus,
+.field textarea:focus{
+  border-color:#7c8791;
+  box-shadow:0 0 0 3px rgba(23,35,53,.07);
+}
+.form-privacy{
+  margin:1rem 0 0!important;
+  color:#8a939c!important;
+  font-size:.7rem!important;
+  line-height:1.5!important;
+}
+.form-privacy a{
+  text-decoration:underline;
+  text-underline-offset:2px;
+}
+.wizard-error{
+  align-self:center;
+  margin-left:auto;
+  color:#9c4747;
+  font-size:.75rem;
+}
+.wizard-next[disabled],
+.contact-submit[disabled]{
+  opacity:.55;
+  cursor:wait;
+}
+.wizard-success{
+  text-align:center;
+  max-width:500px;
+  margin:0 auto;
+  padding-top:1.5rem;
+}
+.success-mark{
+  width:44px;
+  height:44px;
+  display:grid;
+  place-items:center;
+  margin:0 auto 1.3rem;
+  border-radius:50%;
+  background:var(--ink);
+  color:#fff;
+  font-size:1.1rem;
+  font-weight:700;
+}
+.wizard-success h3{margin-left:auto;margin-right:auto}
+.wizard-success p{max-width:440px;margin-left:auto;margin-right:auto!important}
+.wizard-finish{
+  appearance:none;
+  border:1px solid var(--ink);
+  border-radius:9px;
+  background:var(--ink);
+  color:#fff;
+  padding:.85rem 1rem;
+  font-weight:650;
+  cursor:pointer;
+}
+
+.contact-grid{
+  display:grid;
+  grid-template-columns:minmax(0,.82fr) minmax(400px,1.18fr);
+  gap:clamp(4rem,8vw,8rem);
+  align-items:start;
+}
+.contact-copy{
+  position:sticky;
+  top:3rem;
+}
+.contact-copy h2{
+  margin:0;
+  max-width:7.2ch;
+  color:var(--ink);
+  font-size:clamp(4.2rem,6.5vw,7rem);
+  line-height:.91;
+  letter-spacing:-.04em;
+}
+.contact-copy>p{
+  margin:1.5rem 0 0;
+  max-width:32rem;
+  color:#5f6b76;
+  line-height:1.7;
+  font-size:1.02rem;
+}
+.contact-meta{
+  display:grid;
+  gap:.35rem;
+  margin-top:2rem;
+  padding-top:1.2rem;
+  max-width:32rem;
+  border-top:1px solid var(--line);
+  color:#818b94;
+  font-size:.78rem;
+}
+.contact-meta a{color:var(--ink);font-weight:550}
+
+.contact-form-shell{
+  border-top:1px solid var(--line);
+  padding-top:1.5rem;
+}
+.contact-fields{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:1.1rem;
+}
+.contact-submit-row{
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:2rem;
+  align-items:end;
+  margin-top:1.25rem;
+}
+.contact-submit-row .form-privacy{
+  margin:0!important;
+  max-width:30rem;
+}
+.contact-submit{
+  appearance:none;
+  border:0;
+  cursor:pointer;
+  display:inline-flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:2rem;
+  min-width:190px;
+  padding:1rem 1.05rem;
+  border-radius:9px;
+  background:var(--ink);
+  color:#fff;
+  font-size:.9rem;
+  font-weight:650;
+}
+.contact-status{
+  min-height:1.2rem;
+  margin-top:.8rem;
+  color:#9c4747;
+  font-size:.78rem;
+}
+.contact-success{
+  min-height:330px;
+  padding:4.5rem 1rem;
+  text-align:center;
+}
+.contact-success h3{
+  margin:0 0 .8rem;
+  color:var(--ink);
+  font-size:2rem;
+  letter-spacing:-.025em;
+}
+.contact-success p{
+  max-width:440px;
+  margin:0 auto;
+  color:var(--text);
+  line-height:1.65;
+}
+
+@media(max-width:1000px){
+  .contact-grid{grid-template-columns:1fr;gap:3rem}
+  .contact-copy{position:static}
+  .contact-copy h2{max-width:8ch}
+}
+
+@media(max-width:780px){
+  .process-reassurance{
+    grid-template-columns:1fr;
+    gap:.3rem;
+  }
+
+  .wizard-inline-fields{grid-template-columns:1fr}
+  .wizard-error{
+    position:absolute;
+    left:1rem;
+    right:1rem;
+    bottom:4.25rem;
+    text-align:center;
+  }
+  .wizard-actions{position:relative}
+
+  .contact-grid{gap:2.8rem}
+  .contact-copy h2{
+    font-size:clamp(4rem,16vw,5.6rem);
+  }
+  .contact-fields{grid-template-columns:1fr}
+  .contact-submit-row{
+    grid-template-columns:1fr;
+    gap:1.15rem;
+  }
+  .contact-submit{width:100%}
+}
+
+
+/* =========================================================
+   V28 — VISUAL POLISH
+   ========================================================= */
+
+:root{
+  --max:1320px;
+  --pad:clamp(1.2rem,4vw,4.6rem);
+  --section:clamp(7.25rem,9vw,9.5rem);
+  --ink:#172231;
+  --text:#515d68;
+  --muted:#7f8992;
+  --line:#dfe2e4;
+  --soft:#f5f5f2;
+  --dark:#111a24;
+}
+
+body{
+  background:#f2f2ef;
+  text-rendering:optimizeLegibility;
+}
+
+.wrap{
+  padding-inline:var(--pad);
+}
+
+.section{
+  padding:var(--section) 0;
+}
+
+.section-head{
+  max-width:790px;
+  margin-bottom:clamp(3.9rem,5.2vw,5.5rem);
+}
+
+.section-head-wide{
+  max-width:860px;
+}
+
+.eyebrow{
+  margin-bottom:1.15rem;
+  font-size:.67rem;
+  letter-spacing:.17em;
+}
+
+.section-head h2{
+  font-size:clamp(3.1rem,4.6vw,4.85rem);
+  line-height:.98;
+  letter-spacing:-.038em;
+  font-weight:650;
+}
+
+.section-head p{
+  margin-top:1.45rem;
+  max-width:44rem;
+  font-size:1.03rem;
+  line-height:1.72;
+}
+
+/* HERO: only micro polish, preserve direction */
+.hero{
+  padding-bottom:clamp(5.3rem,7.5vw,6.7rem);
+}
+.hero-stage{
+  border-radius:28px;
+  box-shadow:0 24px 65px rgba(14,20,28,.11);
+}
+.hero-nav{
+  height:94px;
+}
+.hero-content{
+  padding-top:calc(94px + clamp(2rem,4vh,3rem));
+}
+.hero-copy>p{
+  max-width:34rem;
+  line-height:1.62;
+}
+.hero-actions{
+  margin-top:2.1rem;
+}
+.hero-btn,
+.nav-cta{
+  border-radius:8px;
+}
+
+/* PROCESS: 2x2 on desktop for better reading width */
+.process-four{
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+
+.process-four .process-step,
+.process-four .process-step:nth-child(2),
+.process-four .process-step:nth-child(3),
+.process-four .process-step:nth-child(4){
+  min-height:340px;
+  padding:2rem 2.7rem 2.25rem 0;
+  border-bottom:1px solid var(--line);
+  border-right:1px solid var(--line);
+}
+
+.process-four .process-step:nth-child(2),
+.process-four .process-step:nth-child(4){
+  padding-left:2.7rem;
+  padding-right:0;
+  border-right:0;
+}
+
+.process-four .process-step:nth-child(3),
+.process-four .process-step:nth-child(4){
+  border-bottom:0;
+}
+
+.step-no{
+  font-size:.66rem;
+  letter-spacing:.08em;
+}
+
+.process-step h3{
+  margin-bottom:.8rem;
+  font-size:clamp(1.45rem,1.7vw,1.8rem);
+  font-weight:620;
+}
+
+.process-step p{
+  max-width:29rem;
+  margin-bottom:1.5rem;
+  font-size:.96rem;
+  line-height:1.68;
+}
+
+.mini-list{
+  gap:.52rem;
+  font-size:.86rem;
+}
+
+.process-result{
+  margin-top:2.2rem;
+  padding-top:1.4rem;
+  border-top:1px solid var(--line);
+  font-size:.82rem;
+}
+
+.process-reassurance{
+  margin-top:1rem;
+  padding-top:1rem;
+  border-top:0;
+  font-size:.82rem;
+}
+
+.process-reassurance strong{
+  font-weight:620;
+}
+
+/* CONCEPT SECTION */
+.concepts-intro{
+  margin-bottom:3.4rem;
+}
+
+.concept-note{
+  max-width:330px;
+  font-size:.76rem;
+  line-height:1.6;
+  color:#82909d;
+}
+
+.concept-case{
+  margin-top:4.75rem;
+}
+.concept-case:first-of-type{
+  margin-top:0;
+}
+
+.concept-case-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:1rem;
+  margin-bottom:.85rem;
+  color:#81909d;
+  font-size:.66rem;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+.concept-visual{
+  min-height:620px;
+  border-radius:12px;
+  border-color:rgba(255,255,255,.12);
+  box-shadow:0 26px 65px rgba(0,0,0,.16);
+}
+
+.concept-top{
+  left:4.5%;
+  right:4.5%;
+  top:4.7%;
+}
+
+.concept-hero{
+  left:6%;
+  bottom:9%;
+}
+
+.concept-hero strong{
+  font-weight:620;
+}
+
+.concept-two::before{
+  inset:5.5%;
+  box-shadow:0 30px 80px rgba(0,0,0,.13);
+}
+
+.concept-two-title{
+  font-weight:560;
+}
+
+.case-details{
+  margin-top:0;
+  border-top:0;
+}
+
+.case-details>div{
+  padding-top:1.85rem;
+  padding-bottom:2.15rem;
+}
+
+.case-details span{
+  margin-bottom:.85rem;
+  font-size:.64rem;
+}
+
+.case-details p{
+  max-width:24rem;
+  font-size:.88rem;
+  line-height:1.68;
+}
+
+/* TRUST / FOUNDER */
+.trust-section{
+  background:#fff;
+}
+
+.trust-combined{
+  gap:clamp(4.5rem,8vw,8.5rem);
+}
+
+.trust-copy h2{
+  max-width:9.4ch;
+  font-size:clamp(3.05rem,4.2vw,4.55rem);
+  font-weight:650;
+}
+
+.trust-copy>p{
+  font-size:1rem;
+  line-height:1.72;
+}
+
+.founder-line{
+  grid-template-columns:48px 1fr;
+  align-items:center;
+  gap:.9rem;
+  margin-top:2.5rem;
+  padding-top:1.35rem;
+}
+
+.founder-monogram{
+  width:48px;
+  height:48px;
+  display:grid;
+  place-items:center;
+  border:1px solid var(--line);
+  border-radius:50%;
+  background:#f6f6f3;
+  color:var(--ink);
+  font-size:.67rem;
+  font-weight:700;
+  letter-spacing:.08em;
+}
+
+.founder-line strong{
+  display:block;
+  margin-bottom:.18rem;
+  font-size:.9rem;
+}
+
+.founder-line span{
+  font-size:.76rem;
+}
+
+.trust-row{
+  padding:1.8rem 0;
+}
+
+.trust-row h3{
+  max-width:31rem;
+  margin-bottom:.55rem;
+  font-size:1.16rem;
+  font-weight:620;
+}
+
+.trust-row p{
+  max-width:36rem;
+  font-size:.91rem;
+  line-height:1.68;
+}
+
+/* OFFER: compact and elegant */
+.offer-section{
+  padding:clamp(4.6rem,6vw,5.8rem) 0;
+}
+
+.offer-compact{
+  padding-top:1.8rem;
+  align-items:center;
+}
+
+.offer-compact h2{
+  max-width:12.5ch;
+  font-size:clamp(2.55rem,3.4vw,3.65rem);
+  font-weight:620;
+}
+
+.offer-compact p{
+  max-width:40rem;
+  font-size:.96rem;
+  line-height:1.68;
+}
+
+.offer-actions{
+  justify-items:stretch;
+  min-width:275px;
+}
+
+.offer-button{
+  min-width:275px;
+  border-radius:8px;
+  padding:.95rem 1rem;
+}
+
+.offer-hint{
+  padding-left:.1rem;
+}
+
+.offer-direct-link{
+  padding-left:.1rem;
+}
+
+/* FAQ: tighter, less "blocky" */
+.faq summary{
+  padding:1.55rem 0;
+  font-size:1rem;
+  font-weight:580;
+}
+
+.faq p{
+  padding-bottom:1.65rem;
+  max-width:46rem;
+  font-size:.92rem;
+}
+
+/* CONTACT: turn into a premium end section */
+.final{
+  padding:clamp(7.2rem,9vw,9rem) 0;
+  background:#f1f2f2;
+}
+
+.contact-grid{
+  gap:clamp(4.8rem,8vw,8rem);
+}
+
+.contact-copy h2{
+  max-width:7.5ch;
+  font-size:clamp(4.25rem,6.25vw,6.8rem);
+  font-weight:650;
+}
+
+.contact-copy>p{
+  margin-top:1.55rem;
+  font-size:.98rem;
+  line-height:1.72;
+}
+
+.contact-form-shell{
+  padding-top:0;
+  border-top:0;
+}
+
+.contact-form-intro{
+  margin-bottom:1.65rem;
+  padding-bottom:1.25rem;
+  border-bottom:1px solid var(--line);
+}
+
+.contact-form-intro span{
+  display:block;
+  margin-bottom:.45rem;
+  color:#8a939c;
+  font-size:.65rem;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  font-weight:700;
+}
+
+.contact-form-intro h3{
+  margin:0;
+  color:var(--ink);
+  font-size:1.35rem;
+  font-weight:620;
+  letter-spacing:-.02em;
+}
+
+.contact-fields{
+  gap:1.25rem 1.1rem;
+}
+
+.field{
+  gap:.5rem;
+}
+
+.field label{
+  font-size:.73rem;
+  letter-spacing:.01em;
+}
+
+.field input,
+.field select,
+.field textarea{
+  border-radius:7px;
+  border-color:#d7dbde;
+  padding:.9rem .9rem;
+  background:rgba(255,255,255,.68);
+  transition:border-color .2s ease,background .2s ease,box-shadow .2s ease;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus{
+  background:#fff;
+  border-color:#808a93;
+  box-shadow:0 0 0 3px rgba(23,34,49,.055);
+}
+
+.contact-submit-row{
+  margin-top:1.4rem;
+}
+
+.contact-submit{
+  min-width:200px;
+  border-radius:8px;
+}
+
+.form-privacy{
+  font-size:.66rem!important;
+  line-height:1.5!important;
+}
+
+/* DIALOG / WIZARD polish */
+.project-dialog{
+  width:min(700px,calc(100% - 2rem));
+  border-radius:14px;
+  box-shadow:0 32px 100px rgba(0,0,0,.30);
+}
+
+.wizard-top{
+  padding:1rem 1.25rem;
+}
+
+.wizard-body{
+  padding:clamp(2rem,4vw,3rem);
+}
+
+.wizard-step h3{
+  font-size:clamp(1.95rem,3.6vw,2.55rem);
+  font-weight:630;
+}
+
+.wizard-step>p{
+  font-size:.93rem;
+}
+
+.choice-grid{
+  gap:.65rem;
+}
+
+.choice label{
+  min-height:72px;
+  border-radius:8px;
+  padding:.9rem 1rem;
+  font-size:.91rem;
+  background:#fff;
+}
+
+.choice input:checked+label{
+  background:#f4f5f5;
+}
+
+.wizard-actions{
+  padding:1rem 1.2rem 1.15rem;
+}
+
+.wizard-back,
+.wizard-next,
+.wizard-finish{
+  border-radius:8px;
+}
+
+/* Footer refinement */
+footer{
+  padding-top:1.25rem;
+  padding-bottom:1.4rem;
+}
+
+/* Large desktop */
+@media(min-width:1450px){
+  .concept-visual{min-height:660px}
+}
+
+/* Tablet */
+@media(max-width:1000px){
+  .process-four{
+    grid-template-columns:1fr;
+  }
+  .process-four .process-step,
+  .process-four .process-step:nth-child(2),
+  .process-four .process-step:nth-child(3),
+  .process-four .process-step:nth-child(4){
+    min-height:auto;
+    padding:1.8rem 0 1.95rem;
+    border-right:0;
+    border-bottom:1px solid var(--line);
+  }
+  .process-four .process-step:last-child{
+    border-bottom:0;
+  }
+  .step-no{
+    margin-bottom:2.7rem;
+  }
+}
+
+/* Mobile */
+@media(max-width:780px){
+  :root{
+    --section:4.9rem;
+    --pad:1.15rem;
+  }
+
+  .hero{
+    padding-bottom:4.15rem;
+  }
+
+  .section-head{
+    margin-bottom:2.9rem;
+  }
+
+  .section-head h2,
+  .trust-copy h2{
+    font-size:clamp(2.85rem,12.4vw,4rem);
+    line-height:1;
+  }
+
+  .section-head p,
+  .trust-copy>p{
+    font-size:.96rem;
+    line-height:1.68;
+  }
+
+  .process-four .process-step,
+  .process-four .process-step:nth-child(2),
+  .process-four .process-step:nth-child(3),
+  .process-four .process-step:nth-child(4){
+    padding:1.45rem 0 1.55rem;
+  }
+
+  .step-no{
+    margin-bottom:2.2rem;
+  }
+
+  .process-step h3{
+    font-size:1.42rem;
+  }
+
+  .process-result{
+    display:grid;
+    gap:.42rem;
+    margin-top:1.55rem;
+  }
+
+  .process-reassurance{
+    margin-top:.9rem;
+  }
+
+  .concepts-intro{
+    margin-bottom:2.4rem;
+  }
+
+  .concept-case{
+    margin-top:3.4rem;
+  }
+
+  .concept-case-head{
+    margin-bottom:.65rem;
+    font-size:.58rem;
+  }
+
+  .concept-visual{
+    min-height:420px;
+    border-radius:10px;
+  }
+
+  .case-details{
+    grid-template-columns:1fr;
+  }
+
+  .case-details>div,
+  .case-details>div:nth-child(2),
+  .case-details>div:nth-child(3){
+    padding:1.15rem 0 1.3rem;
+    border-right:0;
+    border-bottom:1px solid rgba(255,255,255,.12);
+  }
+
+  .case-details>div:last-child{
+    border-bottom:0;
+  }
+
+  .trust-combined{
+    gap:2.8rem;
+  }
+
+  .founder-line{
+    margin-top:1.9rem;
+  }
+
+  .offer-section{
+    padding:4.1rem 0;
+  }
+
+  .offer-compact{
+    gap:2rem;
+  }
+
+  .offer-actions{
+    min-width:0;
+  }
+
+  .offer-button{
+    width:100%;
+    min-width:0;
+  }
+
+  .final{
+    padding:5.5rem 0;
+  }
+
+  .contact-copy h2{
+    font-size:clamp(3.9rem,15.5vw,5.35rem);
+  }
+
+  .contact-form-intro{
+    margin-bottom:1.4rem;
+  }
+
+  .contact-form-intro h3{
+    font-size:1.24rem;
+  }
+
+  .contact-fields{
+    gap:1rem;
+  }
+}
+
+
+/* =========================================================
+   V29 — QUIET / HOMOGENEOUS DESIGN SYSTEM
+   ========================================================= */
+:root{
+  --max:1260px;
+  --pad:clamp(1.15rem,3.6vw,3.8rem);
+  --section:clamp(6.7rem,8vw,8.2rem);
+  --ink:#182331;
+  --text:#58636e;
+  --muted:#858e96;
+  --line:#e1e4e6;
+  --soft:#f6f6f3;
+  --dark:#121a24;
+}
+
+body{background:#fff}
+
+.section{
+  padding:var(--section) 0;
+  background:#fff;
+}
+
+.section-head{
+  max-width:720px;
+  margin-bottom:clamp(3.3rem,4.5vw,4.6rem);
+}
+
+.section-head h2{
+  max-width:12ch;
+  font-size:clamp(2.75rem,4vw,4.2rem);
+  line-height:1.01;
+  letter-spacing:-.034em;
+  font-weight:640;
+}
+
+.section-head p{
+  max-width:42rem;
+  font-size:1rem;
+  line-height:1.72;
+}
+
+.eyebrow{
+  margin-bottom:.9rem;
+  font-size:.65rem;
+  letter-spacing:.16em;
+}
+
+/* hero separation */
+.hero{
+  background:#f2f2ef;
+  padding-bottom:4.8rem;
+}
+
+/* PROCESS: clean rows, no grid boxes */
+.section-process{background:#fff}
+
+.process-flow{
+  border-top:1px solid var(--line);
+}
+
+.flow-step{
+  display:grid;
+  grid-template-columns:52px minmax(0,1fr) minmax(180px,.45fr);
+  gap:2rem;
+  align-items:start;
+  padding:2.15rem 0 2.25rem;
+  border-bottom:1px solid var(--line);
+}
+
+.flow-step-number{
+  padding-top:.18rem;
+  color:#9aa2aa;
+  font-size:.66rem;
+  letter-spacing:.08em;
+}
+
+.flow-step-content h3{
+  margin:0 0 .55rem;
+  color:var(--ink);
+  font-size:1.3rem;
+  font-weight:620;
+  letter-spacing:-.018em;
+}
+
+.flow-step-content p{
+  margin:0;
+  max-width:40rem;
+  color:var(--text);
+  font-size:.94rem;
+  line-height:1.68;
+}
+
+.flow-step-meta{
+  padding-top:.2rem;
+  color:#8a939b;
+  font-size:.76rem;
+  line-height:1.55;
+  text-align:right;
+}
+
+.process-note{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.35rem .6rem;
+  margin-top:1.25rem;
+  color:#747e87;
+  font-size:.82rem;
+  line-height:1.55;
+}
+.process-note strong{color:var(--ink);font-weight:620}
+
+/* CONCEPTS: single dark visual world */
+.concept-section{
+  background:var(--dark)!important;
+  padding-top:clamp(6.8rem,8vw,8.2rem);
+  padding-bottom:clamp(7rem,9vw,9rem);
+}
+
+.concept-section .section-head h2{color:#fff}
+.concept-section .section-head p{color:#aab4bd}
+.concept-section .eyebrow{color:#8795a2}
+
+.concepts-intro{
+  align-items:end;
+  margin-bottom:4.4rem;
+}
+
+.concept-note{
+  color:#758390;
+  font-size:.73rem;
+  text-align:right;
+}
+
+.concept-story{
+  margin-top:6.2rem;
+}
+.concept-story:first-of-type{margin-top:0}
+
+.concept-label-row{
+  display:flex;
+  justify-content:space-between;
+  gap:1rem;
+  margin-bottom:.8rem;
+  color:#7e8c99;
+  font-size:.62rem;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+}
+
+.site-preview{
+  position:relative;
+  min-height:600px;
+  overflow:hidden;
+  border-radius:4px;
+}
+
+.site-preview-craft{
+  background:
+    linear-gradient(90deg,rgba(10,12,14,.62),rgba(10,12,14,.14)),
+    url("https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?q=80&w=2000&auto=format&fit=crop") center/cover no-repeat;
+}
+
+.preview-nav{
+  position:absolute;
+  left:4.5%;
+  right:4.5%;
+  top:5%;
+  display:flex;
+  justify-content:space-between;
+  gap:2rem;
+  color:#fff;
+  font-size:.64rem;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+.preview-nav strong{font-weight:700;letter-spacing:.12em}
+
+.preview-copy{
+  position:absolute;
+  left:6%;
+  bottom:9%;
+  max-width:620px;
+  color:#fff;
+}
+
+.preview-copy>span,
+.b2b-copy>span{
+  display:block;
+  margin-bottom:1rem;
+  color:rgba(255,255,255,.68);
+  font-size:.66rem;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+}
+
+.preview-copy h3,
+.b2b-copy h3{
+  margin:0;
+  font-size:clamp(3.7rem,6vw,6.6rem);
+  line-height:.91;
+  letter-spacing:-.045em;
+  font-weight:620;
+}
+
+.preview-copy p{
+  max-width:28rem;
+  margin:1.25rem 0 0;
+  color:rgba(255,255,255,.76);
+  line-height:1.62;
+  font-size:.9rem;
+}
+
+.preview-cta{
+  display:inline-block;
+  margin-top:1.25rem;
+  padding-bottom:.2rem;
+  border-bottom:1px solid rgba(255,255,255,.55);
+  font-size:.8rem;
+}
+
+.preview-side-note{
+  position:absolute;
+  right:4.5%;
+  bottom:5%;
+  display:grid;
+  gap:.2rem;
+  color:#fff;
+  text-align:right;
+}
+.preview-side-note span{font-size:.6rem;opacity:.6}
+.preview-side-note strong{font-size:.78rem;font-weight:550}
+
+.site-preview-b2b{
+  background:
+    radial-gradient(800px 420px at 80% 20%,rgba(90,110,132,.16),transparent 55%),
+    #eef0ee;
+  color:var(--ink);
+}
+
+.site-preview-b2b::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(rgba(24,35,49,.055) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(24,35,49,.055) 1px,transparent 1px);
+  background-size:88px 88px;
+}
+
+.dark-nav{color:var(--ink)}
+
+.b2b-copy{
+  position:absolute;
+  left:6%;
+  top:28%;
+  max-width:620px;
+  color:var(--ink);
+}
+.b2b-copy>span{color:#72808d}
+.b2b-copy p{
+  max-width:31rem;
+  margin:1.3rem 0 0;
+  color:#65717c;
+  line-height:1.65;
+  font-size:.9rem;
+}
+
+.b2b-index{
+  position:absolute;
+  right:6%;
+  bottom:9%;
+  width:min(330px,30%);
+}
+.b2b-index div{
+  display:grid;
+  grid-template-columns:36px 1fr;
+  gap:.7rem;
+  padding:.85rem 0;
+  border-top:1px solid rgba(24,35,49,.16);
+}
+.b2b-index span{font-size:.6rem;color:#8a949d}
+.b2b-index strong{font-size:.82rem;font-weight:560}
+
+.case-summary{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:2.4rem;
+  padding-top:1.45rem;
+}
+.case-summary span{
+  display:block;
+  margin-bottom:.55rem;
+  color:#778592;
+  font-size:.6rem;
+  letter-spacing:.11em;
+  text-transform:uppercase;
+}
+.case-summary p{
+  margin:0;
+  color:#aab4bd;
+  font-size:.86rem;
+  line-height:1.62;
+}
+
+/* TRUST: simple three-column section */
+.trust-section{background:#fff!important}
+
+.trust-simple{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:clamp(2.5rem,5vw,5rem);
+  padding-top:.2rem;
+}
+
+.trust-simple-item h3{
+  margin:0 0 .65rem;
+  color:var(--ink);
+  font-size:1.12rem;
+  font-weight:620;
+  letter-spacing:-.015em;
+}
+.trust-simple-item p{
+  margin:0;
+  color:var(--text);
+  font-size:.91rem;
+  line-height:1.67;
+}
+
+.founder-simple{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.35rem .8rem;
+  margin-top:3.2rem;
+  padding-top:1.2rem;
+  border-top:1px solid var(--line);
+  color:#818b94;
+  font-size:.76rem;
+}
+.founder-simple strong{
+  color:var(--ink);
+  font-weight:620;
+}
+
+/* OFFER: light and small, integrated */
+.offer-section-light{
+  background:var(--soft)!important;
+  padding:clamp(4.8rem,6vw,5.8rem) 0!important;
+}
+
+.offer-section-light>.wrap>.eyebrow{
+  display:block;
+  margin-bottom:1rem;
+}
+
+.offer-compact-light{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:clamp(2.5rem,5vw,5rem);
+  align-items:end;
+}
+
+.offer-compact-light h2{
+  margin:0;
+  max-width:13ch;
+  color:var(--ink);
+  font-size:clamp(2.35rem,3.2vw,3.45rem);
+  line-height:1.02;
+  letter-spacing:-.03em;
+  font-weight:630;
+}
+.offer-compact-light p{
+  margin:1rem 0 0;
+  max-width:40rem;
+  color:var(--text);
+  font-size:.94rem;
+  line-height:1.7;
+}
+
+.offer-section-light .offer-button{
+  background:var(--ink);
+  color:#fff;
+}
+
+.offer-section-light .offer-hint{color:#8a939c}
+.offer-section-light .offer-direct-link{color:#7c868f}
+.offer-section-light .offer-direct-link strong{color:var(--ink)}
+
+/* FAQ */
+#faq{background:#fff}
+
+.faq summary{
+  padding:1.45rem 0;
+  font-size:.96rem;
+}
+.faq p{
+  max-width:45rem;
+  font-size:.9rem;
+}
+
+/* CONTACT: still light, no separate design world */
+.final{
+  background:#f4f4f2;
+  padding:clamp(6.5rem,8vw,8rem) 0;
+}
+
+.contact-grid{
+  grid-template-columns:minmax(0,.8fr) minmax(420px,1.2fr);
+  gap:clamp(4rem,7vw,7rem);
+}
+
+.contact-copy h2{
+  max-width:7.7ch;
+  font-size:clamp(3.7rem,5.7vw,6.1rem);
+}
+
+.contact-copy>p{
+  max-width:30rem;
+  font-size:.94rem;
+}
+
+.contact-form-shell{
+  padding-top:.1rem;
+}
+
+.contact-form-intro h3{
+  font-size:1.22rem;
+}
+
+.field input,
+.field select,
+.field textarea{
+  background:#fff;
+  border-color:#dfe2e4;
+}
+
+/* Remove leftover V28 visual systems */
+.process,
+.process-four,
+.process-result,
+.process-reassurance,
+.trust-combined,
+.trust-list-new,
+.founder-line,
+.concept-visual,
+.concept-case-head,
+.case-details,
+.offer-compact{
+  /* intentionally superseded by V29 structures */
+}
+
+/* Tablet */
+@media(max-width:1000px){
+  .flow-step{
+    grid-template-columns:46px minmax(0,1fr);
+  }
+  .flow-step-meta{
+    grid-column:2;
+    margin-top:.15rem;
+    text-align:left;
+  }
+
+  .trust-simple{
+    grid-template-columns:1fr;
+    gap:2rem;
+  }
+
+  .offer-compact-light{
+    grid-template-columns:1fr;
+    align-items:start;
+  }
+
+  .contact-grid{
+    grid-template-columns:1fr;
+  }
+}
+
+/* Mobile */
+@media(max-width:780px){
+  :root{
+    --section:4.7rem;
+    --pad:1.15rem;
+  }
+
+  .section-head{
+    margin-bottom:2.75rem;
+  }
+
+  .section-head h2{
+    font-size:clamp(2.65rem,11.8vw,3.75rem);
+  }
+
+  .flow-step{
+    grid-template-columns:34px 1fr;
+    gap:.8rem;
+    padding:1.5rem 0 1.6rem;
+  }
+  .flow-step-meta{
+    grid-column:2;
+    font-size:.7rem;
+  }
+  .flow-step-content h3{
+    font-size:1.22rem;
+  }
+  .flow-step-content p{
+    font-size:.9rem;
+  }
+
+  .process-note{
+    display:grid;
+    gap:.25rem;
+    margin-top:1rem;
+  }
+
+  .concept-section{
+    padding-top:4.8rem;
+    padding-bottom:5.2rem;
+  }
+
+  .concepts-intro{
+    margin-bottom:2.8rem;
+  }
+
+  .concept-note{
+    margin-top:1.2rem;
+    text-align:left;
+  }
+
+  .concept-story{
+    margin-top:4rem;
+  }
+
+  .site-preview{
+    min-height:430px;
+  }
+
+  .preview-nav{
+    left:5%;
+    right:5%;
+    font-size:.48rem;
+  }
+
+  .preview-copy{
+    left:6%;
+    right:6%;
+  }
+
+  .preview-copy h3,
+  .b2b-copy h3{
+    font-size:clamp(3rem,13vw,4.4rem);
+  }
+
+  .preview-side-note{display:none}
+
+  .b2b-copy{
+    left:6%;
+    right:6%;
+    top:20%;
+  }
+
+  .b2b-index{
+    left:6%;
+    right:6%;
+    bottom:7%;
+    width:auto;
+  }
+
+  .case-summary{
+    grid-template-columns:1fr;
+    gap:1.2rem;
+    padding-top:1.2rem;
+  }
+
+  .trust-simple{
+    gap:1.7rem;
+  }
+
+  .founder-simple{
+    margin-top:2.3rem;
+  }
+
+  .offer-section-light{
+    padding:4.2rem 0!important;
+  }
+
+  .offer-compact-light{
+    gap:1.8rem;
+  }
+
+  .offer-compact-light h2{
+    font-size:clamp(2.4rem,10.7vw,3.35rem);
+  }
+
+  .contact-copy h2{
+    font-size:clamp(3.6rem,15vw,5.1rem);
+  }
+}
+
+
+/* =========================================================
+   V30 — OFFER / WIZARD / FOOTER REFINEMENT
+   ========================================================= */
+
+/* Dark offer block returns as one deliberate CTA moment */
+.offer-section-light{
+  background:var(--dark)!important;
+  color:#fff;
+  padding:clamp(4.8rem,6vw,5.8rem) 0!important;
+}
+
+.offer-section-light>.wrap>.eyebrow{
+  color:#8795a2;
+}
+
+.offer-compact-light h2{
+  color:#fff;
+}
+
+.offer-compact-light p{
+  color:#aab4bd;
+}
+
+.offer-section-light .offer-button{
+  background:#fff;
+  color:#111923;
+}
+
+.offer-section-light .offer-direct-link{
+  color:#83919e;
+}
+
+.offer-section-light .offer-direct-link strong{
+  color:#dfe5ea;
+}
+
+.offer-section-light .offer-direct-link:hover strong{
+  color:#fff;
+}
+
+/* Dialog must remain usable even when content is taller than viewport */
+.project-dialog{
+  width:min(700px,calc(100% - 2rem));
+  max-height:calc(100dvh - 2rem);
+  overflow:hidden;
+}
+
+.wizard{
+  min-height:0;
+  height:min(760px,calc(100dvh - 2rem));
+  max-height:calc(100dvh - 2rem);
+}
+
+.wizard-top,
+.wizard-progress,
+.wizard-actions{
+  flex:0 0 auto;
+}
+
+.wizard-body{
+  min-height:0;
+  flex:1 1 auto;
+  overflow-y:auto;
+  overscroll-behavior:contain;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-gutter:stable;
+}
+
+.wizard-actions{
+  position:relative;
+  z-index:4;
+  background:#fff;
+  box-shadow:0 -10px 24px rgba(16,25,36,.045);
+}
+
+/* Slightly tighten final briefing step */
+.wizard-step[data-step="4"] .field-grid{
+  gap:.85rem;
+}
+.wizard-step[data-step="4"] .wizard-summary{
+  margin-bottom:1rem;
+}
+.wizard-step[data-step="4"] textarea{
+  min-height:92px;
+}
+
+/* Contact section: contact data now belongs to footer */
+.contact-copy>p{
+  margin-bottom:0;
+}
+
+/* Professional dark footer */
+.site-footer{
+  background:#111a24;
+  color:#aab3bc;
+  padding:clamp(4.5rem,6vw,6rem) 0 1.5rem;
+  border-top:0;
+  font-size:inherit;
+}
+
+.footer-main{
+  display:grid;
+  grid-template-columns:minmax(300px,1.45fr) minmax(150px,.55fr) minmax(230px,.7fr);
+  gap:clamp(3rem,7vw,7rem);
+  padding-bottom:clamp(3.5rem,5vw,5rem);
+}
+
+.footer-brand{
+  display:inline-flex;
+  align-items:baseline;
+  gap:.38rem;
+  color:#fff;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+.footer-brand strong{
+  font-size:1.18rem;
+  font-weight:800;
+}
+
+.footer-brand span{
+  font-size:1.18rem;
+  font-weight:300;
+}
+
+.footer-brand-block p{
+  margin:1.2rem 0 0;
+  max-width:31rem;
+  color:#87939e;
+  font-size:.88rem;
+  line-height:1.68;
+}
+
+.footer-column{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:.65rem;
+  color:#9aa5af;
+  font-size:.82rem;
+}
+
+.footer-column a{
+  transition:color .2s ease,transform .2s ease;
+}
+
+.footer-column a:hover{
+  color:#fff;
+  transform:translateX(2px);
+}
+
+.footer-title{
+  margin-bottom:.55rem;
+  color:#657482;
+  font-size:.62rem;
+  font-weight:700;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+
+.footer-column a[href^="mailto"]{
+  margin-top:.2rem;
+  color:#e3e8ec;
+}
+
+.footer-bottom{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:2rem;
+  padding-top:1.4rem;
+  border-top:1px solid rgba(255,255,255,.11);
+  color:#697784;
+  font-size:.68rem;
+}
+
+.footer-legal{
+  display:flex;
+  gap:1.35rem;
+}
+
+.footer-legal a{
+  transition:color .2s ease;
+}
+
+.footer-legal a:hover{
+  color:#cbd3da;
+}
+
+@media(max-width:780px){
+  .project-dialog{
+    width:calc(100% - .8rem);
+    max-height:calc(100dvh - .8rem);
+    border-radius:12px;
+  }
+
+  .wizard{
+    height:calc(100dvh - .8rem);
+    max-height:calc(100dvh - .8rem);
+  }
+
+  .wizard-body{
+    padding:1.4rem 1.05rem 1.8rem;
+  }
+
+  .wizard-step[data-step="4"] .field-grid{
+    gap:.75rem;
+  }
+
+  .wizard-step[data-step="4"] textarea{
+    min-height:82px;
+  }
+
+  .wizard-actions{
+    padding:.85rem 1rem .95rem;
+  }
+
+  .footer-main{
+    grid-template-columns:1fr;
+    gap:2.5rem;
+    padding-bottom:3.25rem;
+  }
+
+  .footer-brand-block p{
+    max-width:27rem;
+  }
+
+  .footer-bottom{
+    align-items:flex-start;
+    flex-direction:column;
+    gap:.85rem;
+  }
+}
+
+
+/* =========================================================
+   V31 — DESKTOP HEADLINE RHYTHM / LINE BREAKS
+   ========================================================= */
+
+/* Avoid accidental, narrow editorial wrapping on wide screens */
+.section-head{
+  max-width:900px;
+}
+
+.section-head h2{
+  max-width:15ch;
+  text-wrap:balance;
+  hyphens:none;
+}
+
+.section-head p{
+  max-width:46rem;
+  text-wrap:pretty;
+}
+
+/* Section-specific headline widths */
+.section-process .section-head h2{
+  max-width:14.5ch;
+}
+
+.concept-section .section-head h2{
+  max-width:14ch;
+}
+
+.trust-section .section-head h2{
+  max-width:15.5ch;
+}
+
+#faq .section-head{
+  max-width:980px;
+}
+
+#faq .section-head h2{
+  max-width:17ch;
+}
+
+#faq .section-head p{
+  max-width:48rem;
+}
+
+/* Offer and contact need slightly different rhythm */
+.offer-compact-light h2{
+  max-width:15ch;
+  text-wrap:balance;
+}
+
+.contact-copy h2{
+  max-width:9ch;
+  text-wrap:balance;
+}
+
+/* Keep smaller headings visually controlled as well */
+.flow-step-content h3,
+.trust-simple-item h3,
+.contact-form-intro h3,
+.wizard-step h3{
+  text-wrap:balance;
+}
+
+/* Large desktop: use available width instead of forcing narrow columns */
+@media(min-width:1280px){
+  .section-head h2{
+    max-width:16ch;
+  }
+
+  .section-process .section-head h2{
+    max-width:15.5ch;
+  }
+
+  .concept-section .section-head h2{
+    max-width:15ch;
+  }
+
+  .trust-section .section-head h2{
+    max-width:16.5ch;
+  }
+
+  #faq .section-head h2{
+    max-width:18ch;
+  }
+}
+
+/* Tablet: keep balancing, but don't let headings become too wide */
+@media(max-width:1000px){
+  .section-head{
+    max-width:780px;
+  }
+
+  .section-head h2,
+  .section-process .section-head h2,
+  .concept-section .section-head h2,
+  .trust-section .section-head h2,
+  #faq .section-head h2{
+    max-width:13.5ch;
+  }
+
+  .offer-compact-light h2{
+    max-width:13.5ch;
+  }
+}
+
+/* Mobile: natural line length matters more than balancing */
+@media(max-width:780px){
+  .section-head{
+    max-width:none;
+  }
+
+  .section-head h2,
+  .section-process .section-head h2,
+  .concept-section .section-head h2,
+  .trust-section .section-head h2,
+  #faq .section-head h2,
+  .offer-compact-light h2{
+    max-width:11.5ch;
+    text-wrap:balance;
+  }
+
+  .contact-copy h2{
+    max-width:8ch;
+  }
+}
+
+
+/* =========================================================
+   V32 — SOFT HERO → CONTENT TRANSITION
+   ========================================================= */
+
+/* Beige outer hero area flows gently into the white content area */
+.hero{
+  position:relative;
+  isolation:isolate;
+  background:
+    linear-gradient(
+      to bottom,
+      #f2f2ef 0%,
+      #f2f2ef calc(100% - 170px),
+      #f7f7f5 calc(100% - 105px),
+      #ffffff 100%
+    );
+}
+
+/* Keep the hero card itself above the transition background */
+.hero-shell{
+  position:relative;
+  z-index:1;
+}
+
+/* First section starts seamlessly in white */
+.section-process{
+  position:relative;
+  background:#fff!important;
+}
+
+/* Slightly shorter transition on smaller screens */
+@media(max-width:780px){
+  .hero{
+    background:
+      linear-gradient(
+        to bottom,
+        #f2f2ef 0%,
+        #f2f2ef calc(100% - 110px),
+        #f8f8f6 calc(100% - 60px),
+        #ffffff 100%
+      );
+  }
+}
+
+
+/* =========================================================
+   V33 — COPY REFINEMENT / PARAGRAPH RHYTHM
+   ========================================================= */
+
+/* Process intro: avoid orphaned short final lines on desktop */
+.section-process .section-head{
+  max-width:980px;
+}
+
+.section-process .section-head p{
+  max-width:54rem;
+  text-wrap:pretty;
+}
+
+/* Trust intro: same issue with "und Verantwortung ..." */
+.trust-section .section-head{
+  max-width:940px;
+}
+
+.trust-section .section-head p{
+  max-width:52rem;
+  text-wrap:pretty;
+}
+
+/* Popup title gets a quiet two-line hierarchy */
+.wizard-brand-wrap{
+  display:grid;
+  gap:.16rem;
+}
+
+.wizard-brand{
+  display:block;
+}
+
+.wizard-brand-sub{
+  display:block;
+  color:#9aa3ab;
+  font-size:.61rem;
+  font-weight:500;
+  letter-spacing:.02em;
+  text-transform:none;
+}
+
+/* Keep paragraphs visually balanced on wide screens without forcing odd breaks */
+@media(min-width:1180px){
+  .section-process .section-head p{
+    max-width:56rem;
+  }
+
+  .trust-section .section-head p{
+    max-width:54rem;
+  }
+}
+
+/* Tablet/mobile should keep natural line length */
+@media(max-width:1000px){
+  .section-process .section-head,
+  .trust-section .section-head{
+    max-width:780px;
+  }
+
+  .section-process .section-head p,
+  .trust-section .section-head p{
+    max-width:44rem;
+  }
+}
+
+@media(max-width:780px){
+  .wizard-brand-sub{
+    font-size:.58rem;
+  }
+}
+
+
+/* =========================================================
+   V34 — WIZARD HEADER + INLINE VALIDATION
+   ========================================================= */
+
+.wizard-brand-wrap{
+  display:flex;
+  align-items:center;
+  gap:.42rem;
+  min-width:0;
+}
+
+.wizard-brand,
+.wizard-brand-sub,
+.wizard-brand-separator{
+  font-family:inherit;
+  text-transform:none;
+  letter-spacing:0;
+  white-space:nowrap;
+}
+
+.wizard-brand{
+  color:#4f5963;
+  font-size:.78rem;
+  font-weight:650;
+}
+
+.wizard-brand-separator{
+  color:#a0a8af;
+  font-size:.72rem;
+  font-weight:500;
+}
+
+.wizard-brand-sub{
+  color:#8b949c;
+  font-size:.74rem;
+  font-weight:450;
+}
+
+/* Inline field validation */
+.field.has-error input,
+.field.has-error textarea,
+.field.has-error select{
+  border-color:#b35a5a!important;
+  background:#fffafa!important;
+  box-shadow:0 0 0 3px rgba(179,90,90,.07)!important;
+}
+
+.field-error{
+  margin-top:.1rem;
+  color:#a34f4f;
+  font-size:.68rem;
+  line-height:1.4;
+}
+
+.choice-group-error{
+  margin-top:.85rem;
+  color:#a34f4f;
+  font-size:.7rem;
+  line-height:1.4;
+}
+
+.wizard-error{
+  display:none!important;
+}
+
+/* Mobile: wrap the header naturally */
+@media(max-width:780px){
+  .wizard-top{
+    align-items:flex-start;
+  }
+
+  .wizard-brand-wrap{
+    display:flex;
+    flex-wrap:wrap;
+    gap:.12rem .35rem;
+    max-width:calc(100% - 2.3rem);
+  }
+
+  .wizard-brand{
+    font-size:.75rem;
+  }
+
+  .wizard-brand-separator{
+    display:none;
+  }
+
+  .wizard-brand-sub{
+    flex-basis:100%;
+    font-size:.68rem;
+    line-height:1.35;
+    margin-top:.06rem;
+  }
+}
+
+
+/* =========================================================
+   V35 — INLINE LABEL VALIDATION
+   ========================================================= */
+
+.field label{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:.8rem;
+}
+
+.field-error{
+  margin:0;
+  color:#a34f4f;
+  font-size:.66rem;
+  line-height:1.2;
+  font-weight:500;
+  text-align:right;
+  white-space:nowrap;
+}
+
+.field.has-error input,
+.field.has-error textarea,
+.field.has-error select{
+  border-color:#b35a5a!important;
+  background:#fffafa!important;
+  box-shadow:0 0 0 3px rgba(179,90,90,.07)!important;
+}
+
+@media(max-width:780px){
+  .field label{
+    gap:.5rem;
+  }
+
+  .field-error{
+    font-size:.62rem;
+    white-space:normal;
+    max-width:58%;
+    line-height:1.15;
+  }
+}
+
+
+/* =========================================================
+   V36 — NO CONCEPT SECTION / TIGHTER HOMEPAGE FLOW
+   ========================================================= */
+
+.section-process{
+  padding-bottom:clamp(6.2rem,7.5vw,7.6rem);
+}
+
+.trust-section{
+  padding-top:clamp(6.1rem,7.2vw,7.3rem);
+}
+
+/* Create a subtle tonal handoff without introducing another "design world" */
+.section-process + .trust-section{
+  border-top:1px solid rgba(24,35,49,.055);
+}
+
+/* Slightly reduce whitespace because the page is now intentionally compact */
+.trust-section .section-head{
+  margin-bottom:clamp(3rem,4vw,4rem);
+}
+
+.offer-section-light{
+  margin-top:0;
+}
+
+/* Header nav breathes better with one item less */
+.nav-links{
+  gap:clamp(1.45rem,2vw,2rem);
+}
+
+/* Footer columns rebalance after removing website concepts */
+.footer-main{
+  grid-template-columns:minmax(300px,1.55fr) minmax(150px,.5fr) minmax(230px,.7fr);
+}
+
+@media(max-width:780px){
+  .section-process{
+    padding-bottom:4.5rem;
+  }
+
+  .trust-section{
+    padding-top:4.5rem;
+  }
+}
+
+
+/* =========================================================
+   V37 — SECTION RHYTHM / VISUAL SEPARATION
+   ========================================================= */
+
+/* Give the collaboration section its own quiet tonal field */
+.trust-section{
+  background:#f6f6f3!important;
+  border-top:0!important;
+}
+
+/* Remove the thin divider — the tonal shift now does the job */
+.section-process + .trust-section{
+  border-top:0;
+}
+
+/* Keep transitions spacious but controlled */
+.section-process{
+  padding-bottom:clamp(6rem,7.2vw,7.2rem);
+}
+
+.trust-section{
+  padding-top:clamp(6.3rem,7.5vw,7.5rem);
+  padding-bottom:clamp(6.3rem,7.5vw,7.5rem);
+}
+
+/* The dark offer section follows naturally after the soft neutral field */
+.trust-section + .offer-section-light{
+  margin-top:0;
+}
+
+/* Mobile: preserve the separation without wasting vertical space */
+@media(max-width:780px){
+  .section-process{
+    padding-bottom:4.45rem;
+  }
+
+  .trust-section{
+    padding-top:4.6rem;
+    padding-bottom:4.7rem;
+  }
+}
+
+
+/* =========================================================
+   V38 — THREE-COLOR SYSTEM
+   White · Dark · Hero Neutral
+   ========================================================= */
+
+:root{
+  --surface-neutral:#f2f2ef;
+  --surface-white:#ffffff;
+  --surface-dark:#111a24;
+}
+
+/* Hero outer area defines the neutral tone for the whole page */
+.hero{
+  background:
+    linear-gradient(
+      to bottom,
+      var(--surface-neutral) 0%,
+      var(--surface-neutral) calc(100% - 170px),
+      #f7f7f5 calc(100% - 105px),
+      var(--surface-white) 100%
+    )!important;
+}
+
+/* Main light content */
+.section-process{
+  background:var(--surface-white)!important;
+}
+
+/* Collaboration uses the same exact neutral as the hero */
+.trust-section{
+  background:var(--surface-neutral)!important;
+}
+
+/* Offer is the only dark content section */
+.offer-section-light{
+  background:var(--surface-dark)!important;
+}
+
+/* FAQ uses the same neutral — no second grey tone */
+#faq{
+  background:var(--surface-neutral)!important;
+}
+
+/* Contact returns to pure white for a clean conversion finish */
+.final{
+  background:var(--surface-white)!important;
+}
+
+/* Footer stays dark and visually closes the page */
+.site-footer{
+  background:var(--surface-dark)!important;
+}
+
+/* Remove remaining alternate light surfaces from form/contact areas */
+.contact-form-shell,
+.contact-success{
+  background:transparent;
+}
+
+/* Inputs stay white against neutral/white contexts */
+.field input,
+.field select,
+.field textarea{
+  background:#fff;
+}
+
+/* Mobile transition should use the same neutral */
+@media(max-width:780px){
+  .hero{
+    background:
+      linear-gradient(
+        to bottom,
+        var(--surface-neutral) 0%,
+        var(--surface-neutral) calc(100% - 110px),
+        #f8f8f6 calc(100% - 60px),
+        var(--surface-white) 100%
+      )!important;
+  }
+}
+
+
+/* =========================================================
+   V40 — CONSISTENT H2 SCALE
+   ========================================================= */
+
+/* One consistent H2 scale across all content sections */
+.section-head h2,
+.offer-compact-light h2,
+.contact-copy h2{
+  font-size:clamp(2.75rem,4vw,4.2rem);
+  line-height:1.01;
+  letter-spacing:-.034em;
+  font-weight:640;
+}
+
+/* Preserve section character through line length, not font size */
+.offer-compact-light h2{
+  max-width:15ch;
+}
+
+.contact-copy h2{
+  max-width:11ch;
+}
+
+/* Mobile uses the same common scale as well */
+@media(max-width:780px){
+  .section-head h2,
+  .offer-compact-light h2,
+  .contact-copy h2{
+    font-size:clamp(2.65rem,11.8vw,3.75rem);
+    line-height:1;
+  }
+
+  .contact-copy h2{
+    max-width:10ch;
+  }
+}
+
+
+/* Launch hardening */
+.skip-link{position:fixed;left:1rem;top:1rem;z-index:9999;transform:translateY(-180%);background:#fff;color:#111a24;padding:.7rem .9rem;border-radius:7px;box-shadow:0 8px 30px rgba(0,0,0,.16);font-size:.85rem;font-weight:650}
+.skip-link:focus{transform:none}
+:focus-visible{outline:2px solid currentColor;outline-offset:4px}
+dialog:focus{outline:none}
+.legal-dialog{width:min(880px,calc(100% - 2rem));max-height:calc(100dvh - 2rem);padding:0;border:0;border-radius:14px;background:#fff;color:#182331;box-shadow:0 30px 100px rgba(0,0,0,.32)}
+.legal-dialog::backdrop{background:rgba(9,14,20,.72);backdrop-filter:blur(5px)}
+.legal-dialog-inner{display:flex;flex-direction:column;max-height:calc(100dvh - 2rem)}
+.legal-dialog-head{display:flex;justify-content:space-between;gap:1rem;align-items:center;padding:1.1rem 1.3rem;border-bottom:1px solid #e1e4e6}
+.legal-dialog-head strong{font-size:.94rem}
+.legal-dialog-close{appearance:none;border:0;background:transparent;cursor:pointer;color:#65717b;font-size:1.5rem;line-height:1;padding:.2rem}
+.legal-dialog-body{overflow:auto;padding:clamp(1.5rem,4vw,2.6rem);line-height:1.68;color:#56616c;font-size:.9rem}
+.legal-dialog-body h2{margin:0 0 1.3rem;color:#182331;font-size:clamp(2rem,4vw,3rem);line-height:1.05;letter-spacing:-.03em}
+.legal-dialog-body h3{margin:2rem 0 .55rem;color:#182331;font-size:1.05rem}
+.legal-dialog-body p{margin:.55rem 0}
+.legal-dialog-body a{text-decoration:underline;text-underline-offset:2px;color:#182331}
+.legal-dialog-foot{padding:1rem 1.3rem;border-top:1px solid #e1e4e6;font-size:.75rem}
+.legal-dialog-foot a{text-decoration:underline;text-underline-offset:2px}
+@media(max-width:780px){.legal-dialog{width:calc(100% - .8rem);max-height:calc(100dvh - .8rem);border-radius:11px}.legal-dialog-inner{max-height:calc(100dvh - .8rem)}}
+
+</style>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@graph":[
+    {
+      "@type":"Organization",
+      "@id":"https://bilgery-solutions.de/#organization",
+      "name":"Bilgery Solutions GmbH",
+      "url":"https://bilgery-solutions.de/",
+      "email":"kontakt@bilgery-solutions.de",
+      "address":{
+        "@type":"PostalAddress",
+        "streetAddress":"Mühlrain 35",
+        "postalCode":"70180",
+        "addressLocality":"Stuttgart",
+        "addressCountry":"DE"
+      },
+      "founder":{
+        "@type":"Person",
+        "name":"Dominik Bilgery"
+      }
+    },
+    {
+      "@type":"WebSite",
+      "@id":"https://bilgery-solutions.de/#website",
+      "url":"https://bilgery-solutions.de/",
+      "name":"Bilgery Solutions",
+      "publisher":{"@id":"https://bilgery-solutions.de/#organization"},
+      "inLanguage":"de-DE"
+    },
+    {
+      "@type":"Service",
+      "@id":"https://bilgery-solutions.de/#webdesign",
+      "name":"Professionelle Unternehmenswebsites",
+      "provider":{"@id":"https://bilgery-solutions.de/#organization"},
+      "areaServed":[
+        {"@type":"City","name":"Stuttgart"},
+        {"@type":"Country","name":"Deutschland"}
+      ],
+      "serviceType":[
+        "Webdesign",
+        "Website-Erstellung",
+        "Website-Relaunch",
+        "Landingpages"
+      ],
+      "url":"https://bilgery-solutions.de/"
+    }
+  ]
+}
+</script>
 </head>
-
 <body>
-    <nav class="navbar navbar-expand-lg fixed-top">
-        <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="#">
-                <!-- <i class="fas fa-layer-group fa-2x text-primary me-2"></i> -->
-                <span style="font-weight: 600; font-size: 1.2rem; color: #042344;">BILGERY <span style="font-weight: 400;">SOLUTIONS</span></span>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto align-items-center">
-                    <li class="nav-item"><a class="nav-link" href="#features-section">Angebot</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#steps-section">Vorgehen</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#booking-section">Kontakt</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#faq-section">FAQs</a></li>
-                    <!-- <li class="nav-item ms-3"><a class="nav-link" href="#"><i class="fas fa-sign-in-alt me-1"></i> Login</a></li> -->
-                    <li class="nav-item ms-2"><a href="#booking-section" class="btn btn-demo">Kostenlos beraten lassen</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <section class="hero-section">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <div style="display: flex; align-items: center; gap: 12px;" class="mb-3">
-                        <!-- <div class="stars">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div> -->
-                        <span class="rating-text">Für kleine und mittelständische Unternehmen</span>
-                    </div>
-                    <h1 class="hero-headline">Ihr Transformations-Partner für Künstliche Intelligenz</h1>
-                    <p class="hero-sub">
-                        Wir helfen Ihrem Unternehmen, KI schnell, sicher und messbar einzusetzen – wir entwickeln für Sie eine klare Strategie, führen tragfährige Lösungen ein und kümmern uns um das Change Management.
-                    </p>
-                    <!-- <ul class="list-unstyled hero-checks">
-                        <li><i class="fas fa-check"></i> Kinderleichte Inhaltserstellung mit Drag & Drop Editor</li>
-                        <li><i class="fas fa-check"></i> Premium-Support & strategische Unterstützung</li>
-                        <li><i class="fas fa-check"></i> Server in Frankfurt & DSGVO Konform</li>
-                    </ul> -->
-                    <div class="mt-4 d-flex flex-wrap align-items-center gap-3" style="margin-bottom: 40px;">
-                        <a href="#booking-section" class="btn btn-demo cta-color px-4">Jetzt kostenlos beraten lassen</a>
-                        <a href="#" class="play-link"><i class="fas fa-play-circle"></i> Präsentation ansehen</a>
-                    </div>
-                </div>
-                <div class="col-lg-6 d-flex align-items-center justify-content-center pt-5 pt-lg-0">
-                    <!-- <div class="p-4 rounded-3 w-100" style="background-color: #f0f4f8; color: #333; box-shadow: 0 5px 20px rgba(0,0,0,0.3); max-width: 480px;">
-                        <h3 class="fw-bold fs-5 mb-3" style="color: var(--ls-dark-blue);">
-                            Kostenlose Broschüre sichern
-                        </h3>
-                        <ul class="list-unstyled mb-3 small">
-                            <li class="d-flex align-items-start mb-2">
-                                <i class="fas fa-rocket text-primary me-2 mt-1" style="font-size: 0.9rem; color: #2b7de0 !important; flex-shrink: 0;"></i>
-                                <div style="line-height: 1.4;">Bis zu 30% Zeitersparnis im Büro durch Automatisierung</div>
-                            </li>
-                            <li class="d-flex align-items-start mb-2">
-                                <i class="fas fa-users text-primary me-2 mt-1" style="font-size: 0.9rem; color: #2b7de0 !important; flex-shrink: 0;"></i>
-                                <div style="line-height: 1.4;">Der Einsatz von KI entlastet Sie und Ihre Mitarbeiter</div>
-                            </li>
-                            <li class="d-flex align-items-start">
-                                <i class="fas fa-handshake text-primary me-2 mt-1" style="font-size: 0.9rem; color: #2b7de0 !important; flex-shrink: 0;"></i>
-                                <div style="line-height: 1.4;">Automatisierte Prozesse gehören heute mit dazu</div>
-                            </li>
-                        </ul>
-                        <div class="my-4" style="height: 1px; background: linear-gradient(90deg, transparent, rgba(2, 6, 23, .10), transparent);"></div>
-                        <p class="small text-muted mt-3 mb-3">
-                            Erhalten Sie jetzt eine detaillierte Broschüre zu den Potenzialen.
-                        </p>
-                        <div class="input-group">
-                            <input type="email" class="form-control" placeholder="Ihre geschäftliche E-Mail" aria-label="E-Mail für Broschüre" style="border-radius: 6px 0 0 6px;">
-                            <button class="btn btn-sm btn-primary" type="button" style="background-color: var(--ls-dark-blue); border-color: var(--ls-dark-blue); border-radius: 0 6px 6px 0; font-weight: 600;"> Jetzt zuschicken
-                            </button>
-                        </div>
-                    </div> -->
-                    <img src="https://i.imgur.com/MEnlho5.png" style="width: 80%;">
-                    <!-- <img src="https://i.imgur.com/NdMfsMN.png" style="width: 60%;"> -->
-                    <!-- https://bootstrapmade.com/content/demo/Devin/assets/img/illustration/illustration-28.webp -->
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- <section class="logo-section">
-        <div class="container">
-            <p class="logo-text">Unternehmen die uns bereits als Transformations-Partner nutzen</p>
-            <div class="d-flex justify-content-center flex-wrap align-items-center logo-row">
-                <span class="h4 fw-bold mx-4 opacity-75">FLUIDRA DEUTSCHLAND</span>
-                <span class="h4 fw-bold mx-4 opacity-75">KROMER IMMOBILIEN</span>
-                <span class="h4 fw-bold mx-4 opacity-75">METALLBAU BRENNER</span>
-                <span class="h4 fw-bold mx-4 opacity-75">AICHELE OFENBAU</span>
-            </div>
-        </div>
-    </section> -->
-    <section class="app-section">
-        <div class="container">
-            <h2 class="section-headline">Warum die meisten <span class="highlight-blue">KMUs</span> noch keine KI nutzen:</h2>
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="card card-custom">
-                        <div class="card-body">
-                            <h5 class="card-title">Wo fangen wir an?</h5>
-                            <p class="card-text">Die meisten wissen einfach nicht, wo sie anfangen sollen. Oft fehlt die Zeit und die Expertise. Schließlich gibt es auch rechtliche Vorgaben die eingehalten werden müssen.</p>
-                            <a href="#" class="card-link">KI-Potenzialanalyse <i class="fas fa-chevron-right ms-1"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card card-custom">
-                        <div class="card-body">
-                            <h5 class="card-title">Wann lohnt es sich denn?</h5>
-                            <p class="card-text">Einfach mal loszulegen geht nicht immer gut und kostet in vielen Fällen dann auch noch richtig Geld. Im schlimmsten Fall verliert das Management an Glaubwürdigkeit.</p>
-                            <a href="#" class="card-link">KI-Strategie & Roadmap <i class="fas fa-chevron-right ms-1"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card card-custom">
-                        <div class="card-body">
-                            <h5 class="card-title">Was sagen die Mitarbeiter?</h5>
-                            <p class="card-text">Die Einführung scheitert in den seltensten Fällen an der Strategie oder den Lösungen. Viel häufiger werden diese Lösungen nicht akzeptiert oder einfach nicht verwendet.</p>
-                            <a href="#" class="card-link">KI-Einführung & Anwendung <i class="fas fa-chevron-right ms-1"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="features-section" id="features-section">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 position-relative mb-5 mb-lg-0">
-                    <div class="p-4 p-md-5 rounded-3 w-100 card card-custom">
-                        <div class="d-flex justify-content-between align-items-center mb-4">
-                            <p class="text-uppercase small fw-bold mb-0 text-muted">TYPISCHER START</p>
-                            <span class="badge rounded-pill py-2 px-3" style="background-color: #e6fff3; color: #2ecc71;">
-                                Mit unserer Unterstützung</span>
-                        </div>
-                        <h2 class="fw-bolder mb-1" style="font-size: 2.5rem;">4–6 Wochen</h2>
-                        <p class="small text-muted mb-4">Von der ersten Analyse bis Sie und Ihre Mitarbeiter KI nutzen.</p>
-                        <div class="row">
-                            <div class="col-6">
-                                <p class="text-uppercase small fw-bold mb-1 text-muted">PROZESSE IM FOKUS</p>
-                                <h3 class="fw-bolder mb-1" style="font-size: 2rem;">3–5</h3>
-                                <p class="small text-muted mb-0">Wir starten mit einfachen und sinnvollen Anwendungsfällen.</p>
-                            </div>
-                            <div class="col-6">
-                                <p class="text-uppercase small fw-bold mb-1 text-muted">EINSPARPOTENZIAL</p>
-                                <h3 class="fw-bolder mb-1" style="font-size: 2rem;">15–30 %</h3>
-                                <p class="small text-muted mb-0">Durchschnittlich bei Wissensarbeit & standardisierten Supportprozessen.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 ps-lg-5">
-                    <!-- <div class="feature-label">KI pragmatisch gedacht</div> -->
-                    <h2 class="feature-headline">Microsoft, Google und Co. bieten in Ihren Business-Lizenzen bereits KI.</h2>
-                    <p class="text-muted mb-4">
-                        Wir bringen die Erfahrung aus unterschiedlichsten Branchen und Sie die Prozesse aus Ihrem Unternehmen. Mit unserem Partner-Modell bieten wir Ihnen die Garantie, die fehlende Zeit & Kompetenz in Ihrem Unternehmen schnell auszugleichen. Wir definieren die richtige Strategie und implementieren die Lösung, die wirklich zu Ihren Prozessen passt.
-                    </p>
-                    <div class="check-grid">
-                        <div class="check-item"><i class="fas fa-check"></i> Praxisnahe Expertise</div>
-                        <div class="check-item"><i class="fas fa-check"></i> Einfache Kommunikation</div>
-                        <div class="check-item"><i class="fas fa-check"></i> Zeitliche Flexibilität</div>
-                        <div class="check-item"><i class="fas fa-check"></i> Langfristiger Weitblick</div>
-                        <div class="check-item"><i class="fas fa-check"></i> Hoher Anspruch</div>
-                        <div class="check-item"><i class="fas fa-check"></i> Individuelle Gestaltung</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- <div class="bottom-cta">
-        <div class="container">
-            <p class="small fw-bold text-uppercase text-muted mb-2">LIVE-DEMONSTRATION VOR 600 UNTERNEHMERN IM PUBLIKUM!</p>
-            <h3 class="fw-bold" style="color: #333;">So leicht kann der Einsatz von <span class="highlight-blue">Künstlicher Intelligenz</span> sein:</h3>
-            <div class="mt-4">
-                <img src="https://via.placeholder.com/800x100/000000/ffffff?text=Video+Player+Placeholder" class="img-fluid rounded-bottom" alt="Video">
-            </div>
-        </div>
-    </div> -->
-    <section class="final-cta-section">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-8 mb-5 mb-lg-0">
-                    <h2 class="fw-bold">Bereit für den Einsatz von KI in Ihrem Unternehmen?</h2>
-                    <p class="">Wir zeigen Ihnen in 30 Minuten, wo sich KI in Ihrem Unternehmen kurzfristig rechnet – konkret und umsetzbar.</p>
-                </div>
-                <div class="col-lg-4 text-center mb-3">
-                    <a href="#" class="btn btn-demo py-3 px-4">Termin vereinbaren</a>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="steps-section" id="steps-section">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-5">
-                    <h2 class="fw-bold mb-5">Noch nie war es so einfach, Künstliche Intelligenz zu nutzen:</h2>
-                    <div class="d-flex mb-4">
-                        <div class="step-circle">1</div>
-                        <div class="ms-3">
-                            <div class="step-title">Kennenlernen</div>
-                            <div class="step-text">Unverbindliche und kostenlose Erstberatung, bei der wir Potenziale erläutern, unser Vorgehen aufzeigen und natürlich auf Ihre Fragen und Anforderungen eingehen.</div>
-                        </div>
-                    </div>
-                    <div class="d-flex mb-4">
-                        <div class="step-circle">2</div>
-                        <div class="ms-3">
-                            <div class="step-title">Angebot</div>
-                            <div class="step-text">Anschließend erhalten Sie von uns ein individuelles Angebot, das maßgeschneidet auf Ihre aktuelle Situation ist und die Anforderungen die Sie haben addressiert.</div>
-                        </div>
-                    </div>
-                    <div class="d-flex mb-4">
-                        <div class="step-circle">3</div>
-                        <div class="ms-3">
-                            <div class="step-title">Startschuss</div>
-                            <div class="step-text">Der Einführung von Künstlicher Intelligenz in Ihrem Unternehmen kann nichts mehr im Weg stehen. Wir arbeiten gemeinsam an Potenzialanalyse, Strategie und Umsetzung.</div>
-                        </div>
-                    </div>
-                    <!-- <div class="mt-5">
-                        <a href="#" class="btn btn-demo py-3 px-4 w-100 w-md-auto">Jetzt unverbindlichen Demo-Call buchen</a>
-                    </div> -->
-                </div>
-                <div class="col-lg-6 offset-lg-1 mt-5 mt-lg-0">
-                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2670&auto=format&fit=crop" class="img-fluid rounded shadow-lg">
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="booking-section" id="booking-section">
-        <div class="container">
-            <div class="booking-wrapper">
-                <div class="row g-0">
-                    <div class="col-lg-7 booking-form-col">
-                        <h2 class="fw-bold mb-2">Kostenloses Erstgespräch anfragen</h2>
-                        <p class="text-muted mb-4">Unverbindliche und kostenlose Erstberatung, bei der wir Potenziale erläutern, unser Vorgehen nochmal aufzeigen und natürlich auf Ihre Fragen und Anforderungen eingehen.</p>
-                        <form>
-                            <div class="row g-3 mb-3">
-                                <div class="col-md-6">
-                                    <label class="form-label">Name</label>
-                                    <input type="text" class="form-control" placeholder="Vorname">
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label">Nachname</label>
-                                    <input type="text" class="form-control" placeholder="Nachname">
-                                </div>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Firmenname</label>
-                                <input type="text" class="form-control" placeholder="Dein Firmenname">
-                            </div>
-                            <div class="row g-3 mb-4">
-                                <div class="col-md-6">
-                                    <label class="form-label">E-Mail-Adresse</label>
-                                    <input type="email" class="form-control" placeholder="Deine E-Mail-Adresse">
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label">Handynummer</label>
-                                    <input type="text" class="form-control" placeholder="Deine Handynummer">
-                                </div>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label mb-2 d-block">Was würden Sie gerne in Ihrem Unternehmen umsetzen?</label>
-                                <div class="row g-2">
-                                    <div class="col-md-6">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="check1">
-                                            <label class="form-check-label" for="check1">KI-Potentialanalyse</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="check2">
-                                            <label class="form-check-label" for="check2">KI-Strategie & Roadmap</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="check3">
-                                            <label class="form-check-label" for="check3">KI-Einführung und Anwendung</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="check4">
-                                            <label class="form-check-label" for="check4">Sonstiges</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="mt-4">
-                                <button type="button" class="btn btn-demo w-100 py-3">Jetzt kostenloses Erstgespräch anfragen</button>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="col-lg-5 booking-info-col">
-                        <div class="d-flex align-items-center mb-4">
-                            <img src="https://media.licdn.com/dms/image/v2/D4E03AQERGeeP6tX-CA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1669921870506?e=1766620800&v=beta&t=HbXAT8URRafjClqqvHsf5NcDbxP1etgTC1u6buXeVZw" alt="Nikita" class="profile-img-circle me-3">
-                            <div>
-                                <div class="fw-bold fs-5">Dominik Bilgery</div>
-                                <div class="small opacity-75">Gründer und Geschäftsführer</div>
-                            </div>
-                        </div>
-                        <h4 class="fw-bold mb-3">Das erwartet dich:</h4>
-                        <p class="small opacity-75 mb-3">Ich nehme mir explizit für Sie und Ihr Unternehmen 30 min Zeit.</p>
-                        <ul class="benefit-list">
-                            <li>
-                                <i class="fas fa-check"></i>
-                                <span>Wir hören uns Ihre Situation und die Herausforderungen oder Wünsche an, die Sie aktuell bewegen.</span>
-                            </li>
-                            <li>
-                                <i class="fas fa-check"></i>
-                                <span>Sie bekommen erste Ideen und Vorschläge, die Sie theoretisch jederzeit selbst umsetzen könnten.</span>
-                            </li>
-                            <li>
-                                <i class="fas fa-check"></i>
-                                <span>Wir gehen auf Ihren Fragen ein und zeigen Ihnen, wie sich Ihre Vorstellungen realisieren lassen.</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- <section class="testimonials-section">
-        <div class="container">
-            <div class="row g-4">
-                <div class="col-lg-4">
-                    <div class="testimonial-card">
-                        <div class="testimonial-stars">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                        </div>
-                        <p class="testimonial-text">
-                            Im Demo-Call wurde mir LearningSuite vorgestellt und ich war sofort überzeugt. Nach dem Kauf habe ich ein Strategie-Gespräch vereinbart. Innerhalb von nur 3 Tagen waren alle Daten meiner alten Plattform übertragen.
-                        </p>
-                        <div class="d-flex align-items-center mt-auto">
-                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" alt="Michaela" class="author-img">
-                            <div>
-                                <div class="fw-bold small">Michaela Goll</div>
-                                <div class="small text-muted" style="font-size:0.75rem;">Führungs-Coachin</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="testimonial-card">
-                        <div class="testimonial-stars">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                        </div>
-                        <p class="testimonial-text">
-                            Durch den Demo-Call und der individuellen Beratung habe ich erst verstanden was LearningSuite für ein Gamechanger ist. Jetzt, 2 Monate später, arbeiten wir mit über 700 Kunden in LearningSuite und hatten vorher Kajabi genutzt.
-                        </p>
-                        <div class="d-flex align-items-center mt-auto">
-                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" alt="Patrick" class="author-img">
-                            <div>
-                                <div class="fw-bold small">Patrick Khatrao</div>
-                                <div class="small text-muted" style="font-size:0.75rem;">CEO von GoldenVoice Academy</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="testimonial-card">
-                        <div class="testimonial-stars">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                        </div>
-                        <p class="testimonial-text">
-                            LearningSuite ist die beste Online-Schulungsplattform, die wir je im Einsatz hatten. Wir bilden unsere Kunden und Mitarbeiter damit aus. Durch den Demo-Call konnten wir den Mehrwert für unser Unternehmen verstehen.
-                        </p>
-                        <div class="d-flex align-items-center mt-auto">
-                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" alt="Pascal" class="author-img">
-                            <div>
-                                <div class="fw-bold small">R. Pascal Laub</div>
-                                <div class="small text-muted" style="font-size:0.75rem;">Head of IT bei Rayk Hahne</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> -->
-    <section class="faq-section" id="faq-section">
-        <div class="container">
-            <h2 class="text-center fw-bold mb-5">Antworten auf <span class="highlight-blue">häufig gestellte Fragen:</span></h2>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="accordion" id="accordionLeft">
-                        <div class="accordion-item faq-card">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1">
-                                    Ist KI nicht zu teuer für den Mittelstand?
-                                </button>
-                            </h2>
-                            <div id="collapse1" class="accordion-collapse collapse" data-bs-parent="#accordionLeft">
-                                <div class="accordion-body text-muted small">
-                                    Nein. Wir starten mit einer Potenzialanalyse, um Quick Wins zu identifizieren, deren ROI (Return on Investment) oft schon nach wenigen Monaten erreicht wird. Wir bauen keine teuren Forschungsprojekte, sondern skalierbare, wirtschaftliche Lösungen.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item faq-card">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2">
-                                    Wie lange dauert es, bis wir Ergebnisse sehen?
-                                </button>
-                            </h2>
-                            <div id="collapse2" class="accordion-collapse collapse" data-bs-parent="#accordionLeft">
-                                <div class="accordion-body text-muted small">
-                                    Nach der initialen Analyse (ca. 2 Wochen) können erste produktive KI-Anwendungsfälle in 4 bis 6 Wochen umgesetzt werden. Die Schnelligkeit ist unser Fokus, um schnelle und messbare Erfolge zu liefern.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item faq-card">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3">
-                                    Sind unsere Daten bei KI-Anwendungen sicher?
-                                </button>
-                            </h2>
-                            <div id="collapse3" class="accordion-collapse collapse" data-bs-parent="#accordionLeft">
-                                <div class="accordion-body text-muted small">
-                                    Absolut. Datenschutz und DSGVO-Konformität sind unser höchstes Gebot. Wir empfehlen Ihnen nur die Lösungen, mit denen Sie auch rechtssicher unterwegs sind, sodass Sie jederzeit die volle Kontrolle über Ihre Daten behalten.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="accordion" id="accordionRight">
-                        <div class="accordion-item faq-card">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4">
-                                    Wie können wir unsere Belegschaft mitziehen?
-                                </button>
-                            </h2>
-                            <div id="collapse4" class="accordion-collapse collapse" data-bs-parent="#accordionRight">
-                                <div class="accordion-body text-muted small">
-                                    Akzeptanz ist der Schlüssel. Wir binden Ihre Mitarbeiter von Anfang an in den Prozess ein. Unsere Dienstleistung umfasst umfassendes Change Management und Schulungen, um sicherzustellen, dass Ihr Team die KI produktiv und gerne nutzt.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item faq-card">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5">
-                                    Wie verhindern wir, dass die KI Fehler macht?
-                                </button>
-                            </h2>
-                            <div id="collapse5" class="accordion-collapse collapse" data-bs-parent="#accordionRight">
-                                <div class="accordion-body text-muted small">
-                                    Durch unser Strategie-vor-Technik-Prinzip. Wir trainieren Ihre KI ausschließlich mit den Daten und Dokumenten Ihres Unternehmens. Durch strenge Qualitätskontrolle und die Anbindung an bewährte, kontrollierbare Modelle stellen wir sicher, dass die Ergebnisse präzise, faktenbasiert und für Ihren Anwendungsfall verlässlich sind.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item faq-card">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse6">
-                                    Wie starten wir jetzt ganz konkret?
-                                </button>
-                            </h2>
-                            <div id="collapse6" class="accordion-collapse collapse" data-bs-parent="#accordionRight">
-                                <div class="accordion-body text-muted small">
-                                    Wir bieten ein kostenloses und unverbindliches Erstgespräch an, um sicherzustellen, dass unser Angebot zu Ihren Bedürfnissen passt.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <a class="navbar-brand d-flex align-items-center mb-3" href="#">
-                        <span style="font-weight: 700; font-size: 1.2rem; color: #051b35;">BILGERY <span style="font-weight: 300;">SOLUTIONS</span></span>
-                    </a>
-                    <div class="hotline-badge">
-                        <a href="tel:+49 160 9389 7667">+49 160 9389 7667</a>
-                    </div>
-                    <div class="mt-2 fw-bold small">
-                        Made in Germany
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <div class="footer-col-title">Unternehmen</div>
-                    <ul class="footer-links">
-                        <li><a href="#">Über uns</a></li>
-                        <li><a href="#">Karriere</a></li>
-                        <li><a href="#">News</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <div class="footer-col-title">Lösungen</div>
-                    <ul class="footer-links">
-                        <li><a href="#">Unser KI-Newsletter</a></li>
-                        <li><a href="#">Unser KI-Starterpaket</a></li>
-                        <li><a href="#">Unsere KI-Experten</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <div class="footer-col-title">Rechtliches</div>
-                    <ul class="footer-links">
-                        <li><a href="#">Impressum</a></li>
-                        <li><a href="#">Datenschutz</a></li>
-                        <li><a href="#">AGBs</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom d-flex flex-wrap justify-content-between align-items-center">
-                <div class="mb-2 mb-md-0">
-                    <span class="me-3">Copyright © 2025 BILGERY SOLUTIONS</span>
-                    <a href="#" class="text-muted me-3 text-decoration-none">Impressum</a>
-                    <a href="#" class="text-muted me-3 text-decoration-none">Datenschutz</a>
-                    <a href="#" class="text-muted text-decoration-none">AGB</a>
-                </div>
-                <div class="d-flex align-items-center">
-                    <a href="#" class="text-muted me-3"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="text-muted me-3"><i class="fab fa-linkedin"></i></a>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+<a class="skip-link" href="#main-content">Zum Inhalt springen</a>
+<main id="top">
+  <span id="main-content" tabindex="-1"></span>
+<section class="hero"><div class="hero-shell"><div class="hero-stage reveal"><header class="hero-nav"><a class="brand" href="#top" aria-label="Bilgery Solutions"><strong>BILGERY</strong><span>SOLUTIONS</span></a><nav class="nav-links" aria-label="Hauptnavigation">
+      <a href="#ablauf">Ablauf & Leistungen</a>
+      <a href="#angebot">Angebot</a>
+      <a class="nav-cta" href="#kontakt">Projekt starten ↗</a>
+    </nav></header><div class="hero-content"><div class="hero-copy"><div class="hero-kicker">Professionelle Websites · Stuttgart</div><h1><span class="hero-line">Websites, die</span><span class="hero-line">neue Kunden</span><span class="hero-line">gewinnen.</span></h1><p>Wir entwickeln hochwertige Unternehmenswebsites, die Ihr Unternehmen überzeugend präsentieren, Ihr Angebot klar vermitteln und Interessenten gezielt zur Kontaktaufnahme führen.</p><div class="hero-actions"><a class="hero-btn" href="#kontakt">Projekt besprechen <span>→</span></a><a class="hero-link" href="#leistungen">Leistungen ansehen <span>↗</span></a></div></div></div></div></div></section>
+<section class="section section-process" id="ablauf">
+  <span id="leistungen" class="anchor-target" aria-hidden="true"></span>
+  <div class="wrap">
+    <div class="section-head section-head-wide reveal">
+      <span class="eyebrow">So funktioniert's</span>
+      <h2>In vier Schritten zu Ihrer neuen Website.</h2>
+      <p>Von der ersten Idee bis zum Launch greifen Konzept, Inhalte, Design und Entwicklung ineinander. Sie wissen jederzeit, wo das Projekt steht und was als Nächstes passiert.</p>
+    </div>
 
+    <div class="process-flow">
+      <article class="flow-step reveal">
+        <div class="flow-step-number">01</div>
+        <div class="flow-step-content">
+          <h3>Kennenlernen</h3>
+          <p>Wir sprechen über Ihr Unternehmen, Ihre Leistungen, Ziele und Zielgruppen – und klären, was die neue Website konkret leisten soll.</p>
+        </div>
+        <div class="flow-step-meta">Ziele · Zielgruppe · Umfang</div>
+      </article>
+
+      <article class="flow-step reveal">
+        <div class="flow-step-number">02</div>
+        <div class="flow-step-content">
+          <h3>Konzept & Inhalte</h3>
+          <p>Wir entwickeln Seitenstruktur, Nutzerführung und die zentralen Botschaften. Vorhandene Inhalte entwickeln wir sinnvoll weiter – und unterstützen dort, wo noch etwas fehlt.</p>
+        </div>
+        <div class="flow-step-meta">Struktur · Texte · Nutzerführung</div>
+      </article>
+
+      <article class="flow-step reveal">
+        <div class="flow-step-number">03</div>
+        <div class="flow-step-content">
+          <h3>Design & Entwicklung</h3>
+          <p>Aus dem Konzept entsteht Ihr individueller Webauftritt – professionell gestaltet und technisch sauber für alle Bildschirmgrößen umgesetzt.</p>
+        </div>
+        <div class="flow-step-meta">Design · Mobile · Performance</div>
+      </article>
+
+      <article class="flow-step reveal">
+        <div class="flow-step-number">04</div>
+        <div class="flow-step-content">
+          <h3>Feedback & Launch</h3>
+          <p>Sie prüfen den neuen Auftritt, wir arbeiten Ihr Feedback ein, testen alles und bringen die Website sauber online.</p>
+        </div>
+        <div class="flow-step-meta">Feedback · Qualitätscheck · Launch</div>
+      </article>
+    </div>
+
+    <div class="process-note reveal">
+      <strong>Sie müssen noch kein fertiges Konzept mitbringen.</strong>
+      <span>Im Erstgespräch klären wir gemeinsam, was Ihre neue Website wirklich braucht.</span>
+    </div>
+  </div>
+</section>
+
+<section class="section trust-section">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Was die Zusammenarbeit auszeichnet</span>
+      <h2>Persönlich begleitet. Individuell umgesetzt.</h2>
+      <p>Von der ersten Idee bis zum Launch haben Sie einen direkten Ansprechpartner, der Ihr Projekt kennt und Verantwortung für das Ergebnis übernimmt.</p>
+    </div>
+
+    <div class="trust-simple">
+      <article class="trust-simple-item reveal">
+        <h3>Direkte Zusammenarbeit</h3>
+        <p>Keine Übergaben zwischen Vertrieb, Projektmanagement und Entwicklung. Sie sprechen direkt mit demjenigen, der Ihre Website konzipiert und umsetzt.</p>
+      </article>
+      <article class="trust-simple-item reveal">
+        <h3>Design mit einem Zweck</h3>
+        <p>Gestaltung folgt nicht einfach Trends, sondern Ihrem Unternehmen, Ihrer Zielgruppe und dem gewünschten Ergebnis.</p>
+      </article>
+      <article class="trust-simple-item reveal">
+        <h3>Technik gehört dazu</h3>
+        <p>Performance, responsive Umsetzung und SEO-Grundlagen werden von Anfang an berücksichtigt – nicht nachträglich ergänzt.</p>
+      </article>
+    </div>
+
+    <div class="founder-simple reveal">
+      <strong>Dominik Bilgery</strong>
+      <span>Geschäftsführer · Bilgery Solutions GmbH · Stuttgart</span>
+    </div>
+  </div>
+</section>
+
+<section class="section offer-section-light" id="angebot">
+  <div class="wrap">
+    <span class="eyebrow reveal">Angebot</span>
+    <div class="offer-compact-light">
+      <div class="reveal">
+        <h2>Ein Angebot, das zu Ihrem Projekt passt.</h2>
+        <p>Im ersten Gespräch klären wir Ziele, Ausgangslage und Anforderungen. Anschließend erhalten Sie ein konkretes Angebot für genau die Leistungen, die Ihr Projekt tatsächlich braucht.</p>
+      </div>
+      <div class="offer-actions reveal">
+        <button class="offer-button" type="button" data-open-wizard>
+          <span>Individuelles Angebot anfragen</span><span>→</span>
+        </button>
+        <a class="offer-direct-link" href="#kontakt">Oder lieber direkt schreiben? <strong>Kontaktformular →</strong></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<dialog class="project-dialog" id="projectWizard" aria-labelledby="wizardTitle">
+  <form class="wizard" id="wizardForm" novalidate>
+    <input type="hidden" name="access_key" value="731b88a9-2d42-4e65-94da-00b0ab3ab10d">
+    <input type="hidden" name="subject" value="Website-Projektbriefing über bilgery-solutions.de">
+    <input type="hidden" name="from_name" value="Bilgery Solutions Website">
+    <input type="checkbox" name="botcheck" class="botcheck" tabindex="-1" autocomplete="off">
+
+    <div class="wizard-top">
+      <div class="wizard-brand-wrap">
+        <span class="wizard-brand">Individuelles Angebot anfragen</span>
+        <span class="wizard-brand-separator">·</span>
+        <span class="wizard-brand-sub">Für Ihre professionelle Unternehmenswebsite</span>
+      </div>
+      <button class="wizard-close" type="button" data-close-wizard aria-label="Schließen">×</button>
+    </div>
+    <div class="wizard-progress"><div class="wizard-progress-bar" id="wizardProgress"></div></div>
+
+    <div class="wizard-body">
+      <section class="wizard-step active" data-step="1">
+        <span class="wizard-step-label">Schritt 1 von 4</span>
+        <h3 id="wizardTitle">Was planen Sie?</h3>
+        <p>Eine grobe Einordnung reicht. Details klären wir anschließend gemeinsam.</p>
+        <div class="choice-grid">
+          <div class="choice"><input id="type-new" type="radio" name="Projektart" value="Neue Unternehmenswebsite"><label for="type-new">Neue Unternehmenswebsite</label></div>
+          <div class="choice"><input id="type-relaunch" type="radio" name="Projektart" value="Relaunch bestehender Website"><label for="type-relaunch">Relaunch bestehender Website</label></div>
+          <div class="choice"><input id="type-landing" type="radio" name="Projektart" value="Landingpage / Kampagnenseite"><label for="type-landing">Landingpage / Kampagnenseite</label></div>
+          <div class="choice"><input id="type-open" type="radio" name="Projektart" value="Noch offen"><label for="type-open">Noch offen</label></div>
+        </div>
+      </section>
+
+      <section class="wizard-step" data-step="2">
+        <span class="wizard-step-label">Schritt 2 von 4</span>
+        <h3>Was soll die neue Website vor allem verbessern?</h3>
+        <p>Sie können mehrere Punkte auswählen.</p>
+        <div class="choice-grid multi-choice">
+          <div class="choice"><input id="goal-image" type="checkbox" name="Ziel" value="Professioneller auftreten"><label for="goal-image">Professioneller auftreten</label></div>
+          <div class="choice"><input id="goal-clarity" type="checkbox" name="Ziel" value="Angebot klarer erklären"><label for="goal-clarity">Angebot klarer erklären</label></div>
+          <div class="choice"><input id="goal-leads" type="checkbox" name="Ziel" value="Mehr qualifizierte Anfragen"><label for="goal-leads">Mehr qualifizierte Anfragen</label></div>
+          <div class="choice"><input id="goal-search" type="checkbox" name="Ziel" value="Besser gefunden werden"><label for="goal-search">Besser gefunden werden</label></div>
+          <div class="choice"><input id="goal-maintain" type="checkbox" name="Ziel" value="Inhalte einfacher pflegen"><label for="goal-maintain">Inhalte einfacher pflegen</label></div>
+          <div class="choice"><input id="goal-open" type="checkbox" name="Ziel" value="Noch offen"><label for="goal-open">Noch offen</label></div>
+        </div>
+      </section>
+
+      <section class="wizard-step" data-step="3">
+        <span class="wizard-step-label">Schritt 3 von 4</span>
+        <h3>Wo stehen Sie aktuell?</h3>
+        <p>Sie müssen nichts fertig vorbereitet haben.</p>
+
+        <div class="wizard-subblock">
+          <span class="wizard-subtitle">Inhalte</span>
+          <div class="choice-grid compact-choices">
+            <div class="choice"><input id="content-ready" type="radio" name="Inhalte" value="Texte und Bilder weitgehend vorhanden"><label for="content-ready">Weitgehend vorhanden</label></div>
+            <div class="choice"><input id="content-part" type="radio" name="Inhalte" value="Teilweise vorhanden"><label for="content-part">Teilweise vorhanden</label></div>
+            <div class="choice"><input id="content-help" type="radio" name="Inhalte" value="Unterstützung bei Inhalten gewünscht"><label for="content-help">Unterstützung gewünscht</label></div>
+            <div class="choice"><input id="content-open" type="radio" name="Inhalte" value="Noch offen"><label for="content-open">Noch offen</label></div>
+          </div>
+        </div>
+
+        <div class="wizard-inline-fields">
+          <div class="field">
+            <label for="briefWebsite">Bestehende Website <span>optional</span></label>
+            <input id="briefWebsite" name="Bestehende Website" type="url" placeholder="https://">
+          </div>
+          <div class="field">
+            <label for="briefTiming">Gewünschter Start <span>optional</span></label>
+            <select id="briefTiming" name="Gewünschter Start">
+              <option value="">Noch offen</option>
+              <option>Möglichst bald</option>
+              <option>In den nächsten 1–3 Monaten</option>
+              <option>Später</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <section class="wizard-step" data-step="4">
+        <span class="wizard-step-label">Schritt 4 von 4</span>
+        <h3>Wie können wir Sie erreichen?</h3>
+        <p>Mit den Angaben können wir das erste Gespräch bereits sinnvoll vorbereiten.</p>
+
+        <div class="wizard-summary" id="wizardSummary"></div>
+
+        <div class="field-grid">
+          <div class="field">
+            <label for="contactName">Name *</label>
+            <input id="contactName" name="Name" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="contactCompany">Unternehmen</label>
+            <input id="contactCompany" name="Unternehmen" autocomplete="organization">
+          </div>
+          <div class="field full">
+            <label for="contactEmail">E-Mail *</label>
+            <input id="contactEmail" name="email" type="email" autocomplete="email" required>
+          </div>
+          <div class="field full">
+            <label for="briefMessage">Was sollten wir noch wissen? <span>optional</span></label>
+            <textarea id="briefMessage" name="Weitere Informationen" rows="4" placeholder="Zum Beispiel besondere Anforderungen oder Fragen …"></textarea>
+          </div>
+        </div>
+        <p class="form-privacy">Mit dem Absenden übermitteln Sie uns Ihre Angaben zur Bearbeitung Ihrer Anfrage. Weitere Informationen finden Sie in unserer <a href="/datenschutz/" data-legal-open="datenschutz">Datenschutzerklärung</a>.</p>
+      </section>
+
+      <section class="wizard-step wizard-success" data-success>
+        <span class="wizard-step-label">Vielen Dank</span>
+        <div class="success-mark">✓</div>
+        <h3>Anfrage erfolgreich gesendet</h3>
+        <p>Vielen Dank für Ihre Anfrage. Ihre Nachricht ist bei uns angekommen. Wir melden uns schnellstmöglich persönlich bei Ihnen.</p>
+        <button class="wizard-finish" type="button" data-close-wizard>Schließen</button>
+      </section>
+    </div>
+
+    <div class="wizard-actions">
+      <button class="wizard-back" type="button" data-wizard-back hidden>Zurück</button>
+      <span class="wizard-error" id="wizardError" role="status"></span>
+      <button class="wizard-next" type="button" data-wizard-next>Weiter</button>
+    </div>
+  </form>
+</dialog>
+
+<section class="section" id="faq">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">FAQ</span>
+      <h2>Die wichtigsten Fragen vor Projektstart.</h2>
+      <p>Kurz beantwortet, damit Sie schon vor dem ersten Gespräch wissen, womit Sie rechnen können.</p>
+    </div>
+
+    <div class="faq">
+      <details class="reveal">
+        <summary>Was kostet eine professionelle Unternehmenswebsite?<span>+</span></summary>
+        <p>Das hängt vor allem von Umfang, Inhalten und benötigten Funktionen ab. Nach einem kurzen Erstgespräch erhalten Sie ein konkretes Angebot, das zu den Anforderungen Ihres Projekts passt.</p>
+      </details>
+
+      <details class="reveal">
+        <summary>Wie lange dauert die Erstellung einer neuen Website?<span>+</span></summary>
+        <p>Typische Unternehmenswebsites entstehen innerhalb mehrerer Wochen. Den realistischen Zeitplan stimmen wir vor Projektstart anhand von Umfang, Abstimmung und vorhandenen Inhalten mit Ihnen ab.</p>
+      </details>
+
+      <details class="reveal">
+        <summary>Muss ich Texte und Bilder selbst liefern?<span>+</span></summary>
+        <p>Nein. Vorhandene Inhalte können genutzt werden, müssen aber nicht vollständig vorbereitet sein. Wir strukturieren gemeinsam, welche Inhalte benötigt werden und unterstützen bei der Aufbereitung.</p>
+      </details>
+
+      <details class="reveal">
+        <summary>Können Inhalte meiner bestehenden Website übernommen werden?<span>+</span></summary>
+        <p>Ja. Sinnvolle Inhalte können übernommen und überarbeitet werden. Bei einem Relaunch prüfen wir, was bestehen bleiben sollte und wo eine neue Struktur oder Formulierung sinnvoller wäre.</p>
+      </details>
+
+      <details class="reveal">
+        <summary>Kann ich Inhalte später selbst ändern?<span>+</span></summary>
+        <p>Das lässt sich je nach gewünschter technischer Lösung ermöglichen. Im Erstgespräch klären wir, welche Inhalte Sie regelmäßig selbst pflegen möchten und welches Setup dazu passt.</p>
+      </details>
+
+      <details class="reveal">
+        <summary>Betreuen Sie die Website auch nach dem Launch?<span>+</span></summary>
+        <p>Ja. Auf Wunsch begleiten wir den Webauftritt auch nach Veröffentlichung bei Anpassungen, neuen Inhalten und der weiteren technischen oder inhaltlichen Entwicklung.</p>
+      </details>
+    </div>
+  </div>
+</section>
+<section class="final" id="kontakt">
+  <div class="wrap contact-grid">
+    <div class="contact-copy reveal">
+      <span class="eyebrow">Kontakt</span>
+      <h2>Ihre nächste Website darf besser sein.</h2>
+      <p>Sie möchten Ihr Vorhaben lieber direkt schildern? Schreiben Sie uns kurz. Für eine erste Einschätzung reichen ein paar Sätze vollkommen aus.</p>
+    </div>
+
+    <div class="contact-form-shell reveal">
+      <div class="contact-form-intro">
+        <span>Direkt schreiben</span>
+        <h3>Ein paar Sätze reichen für den Anfang.</h3>
+      </div>
+      <form class="contact-form" id="contactForm" novalidate>
+        <input type="hidden" name="access_key" value="731b88a9-2d42-4e65-94da-00b0ab3ab10d">
+        <input type="hidden" name="subject" value="Kontaktanfrage über bilgery-solutions.de">
+        <input type="hidden" name="from_name" value="Bilgery Solutions Website">
+        <input type="checkbox" name="botcheck" class="botcheck" tabindex="-1" autocomplete="off">
+
+        <div class="contact-fields">
+          <div class="field">
+            <label for="simpleName">Name *</label>
+            <input id="simpleName" name="Name" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="simpleEmail">E-Mail *</label>
+            <input id="simpleEmail" name="email" type="email" autocomplete="email" required>
+          </div>
+          <div class="field full">
+            <label for="simpleCompany">Unternehmen <span>optional</span></label>
+            <input id="simpleCompany" name="Unternehmen" autocomplete="organization">
+          </div>
+          <div class="field full">
+            <label for="simpleMessage">Worum geht es? *</label>
+            <textarea id="simpleMessage" name="Nachricht" rows="6" required placeholder="Zum Beispiel: Wir möchten unsere bestehende Unternehmenswebsite modernisieren …"></textarea>
+          </div>
+        </div>
+
+        <div class="contact-submit-row">
+          <p class="form-privacy">Ihre Angaben verwenden wir ausschließlich zur Bearbeitung Ihrer Anfrage. Mehr dazu in der <a href="/datenschutz/" data-legal-open="datenschutz">Datenschutzerklärung</a>.</p>
+          <button class="contact-submit" type="submit">
+            <span>Anfrage senden</span><span>→</span>
+          </button>
+        </div>
+        <div class="contact-status" id="contactStatus" role="status"></div>
+      </form>
+
+      <div class="contact-success" id="contactSuccess" hidden>
+        <div class="success-mark">✓</div>
+        <h3>Anfrage erfolgreich gesendet</h3>
+        <p>Vielen Dank für Ihre Anfrage. Ihre Nachricht ist bei uns angekommen. Wir melden uns schnellstmöglich persönlich bei Ihnen.</p>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-main">
+      <div class="footer-brand-block">
+        <a class="footer-brand" href="#top" aria-label="Bilgery Solutions">
+          <strong>BILGERY</strong><span>SOLUTIONS</span>
+        </a>
+        <p>Professionelle Unternehmenswebsites – individuell konzipiert, hochwertig gestaltet und technisch sauber umgesetzt.</p>
+      </div>
+
+      <div class="footer-column">
+        <span class="footer-title">Navigation</span>
+        <a href="#ablauf">Ablauf & Leistungen</a>
+        <a href="#angebot">Angebot</a>
+        <a href="#kontakt">Kontakt</a>
+      </div>
+
+      <div class="footer-column">
+        <span class="footer-title">Kontakt</span>
+        <span>Bilgery Solutions GmbH</span>
+        <span>Stuttgart, Deutschland</span>
+        <a href="mailto:kontakt@bilgery-solutions.de">kontakt@bilgery-solutions.de</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> Bilgery Solutions GmbH</span>
+      <div class="footer-legal">
+        <a href="/impressum/" data-legal-open="impressum">Impressum</a>
+        <a href="/datenschutz/" data-legal-open="datenschutz">Datenschutz</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add("in");
+      observer.unobserve(entry.target);
+    }
+  });
+}, {threshold:.1});
+
+document.querySelectorAll(".reveal").forEach((el,i) => {
+  el.style.transitionDelay = `${Math.min((i % 3) * 45, 90)}ms`;
+  observer.observe(el);
+});
+
+document.querySelectorAll(".faq details").forEach(item => {
+  item.addEventListener("toggle", () => {
+    if(item.open){
+      document.querySelectorAll(".faq details[open]").forEach(other => {
+        if(other !== item) other.removeAttribute("open");
+      });
+    }
+  });
+});
+
+async function submitWeb3Forms(form){
+  const data = new FormData(form);
+  const response = await fetch("https://api.web3forms.com/submit", {
+    method: "POST",
+    body: data
+  });
+  const result = await response.json();
+  if(!response.ok || !result.success){
+    throw new Error(result.message || "Die Anfrage konnte nicht gesendet werden.");
+  }
+  return result;
+}
+
+/* Project briefing */
+(() => {
+  const dialog = document.getElementById("projectWizard");
+  const form = document.getElementById("wizardForm");
+  const steps = [...dialog.querySelectorAll(".wizard-step:not([data-success])")];
+  const success = dialog.querySelector("[data-success]");
+  const next = dialog.querySelector("[data-wizard-next]");
+  const back = dialog.querySelector("[data-wizard-back]");
+  const progress = document.getElementById("wizardProgress");
+  const summary = document.getElementById("wizardSummary");
+  const error = document.getElementById("wizardError");
+  let current = 0;
+
+  function selectedRadio(name){
+    return form.querySelector(`[name="${name}"]:checked`)?.value || "Noch offen";
+  }
+
+  function selectedChecks(name){
+    return [...form.querySelectorAll(`[name="${name}"]:checked`)].map(el => el.value);
+  }
+
+  function render(){
+    success.classList.remove("active");
+    steps.forEach((step,i) => step.classList.toggle("active", i === current));
+    progress.style.width = `${((current + 1) / steps.length) * 100}%`;
+    back.hidden = current === 0;
+    next.hidden = false;
+    next.disabled = false;
+    next.textContent = current === steps.length - 1 ? "Erstgespräch anfragen" : "Weiter";
+
+    if(current === steps.length - 1){
+      const goals = selectedChecks("Ziel");
+      const content = selectedRadio("Inhalte");
+      summary.innerHTML =
+        `<strong>Ihr Projekt auf einen Blick</strong><br>` +
+        `${selectedRadio("Projektart")}<br>` +
+        `${goals.length ? goals.join(" · ") : "Ziel noch offen"}<br>` +
+        `${content}`;
+    }
+  }
+
+  function canAdvance(){
+    if(current === 0) return !!form.querySelector('[name="Projektart"]:checked');
+    if(current === 1) return form.querySelectorAll('[name="Ziel"]:checked').length > 0;
+    if(current === 2) return !!form.querySelector('[name="Inhalte"]:checked');
+    return true;
+  }
+
+  function clearInlineErrors(scope = form){
+    scope.querySelectorAll(".field.has-error").forEach(el => el.classList.remove("has-error"));
+    scope.querySelectorAll(".field-error,.choice-group-error").forEach(el => el.remove());
+  }
+
+  function showChoiceError(){
+    const active = steps[current];
+    clearInlineErrors(active);
+    const target = active.querySelector(".choice-grid") || active;
+    const msg = document.createElement("div");
+    msg.className = "choice-group-error";
+    msg.textContent = "Bitte wählen Sie mindestens eine Option aus.";
+    target.insertAdjacentElement("afterend", msg);
+  }
+
+  function showFieldError(input, message){
+    const field = input.closest(".field");
+    if(!field) return;
+    field.classList.add("has-error");
+    const old = field.querySelector(".field-error");
+    if(old) old.remove();
+    const label = field.querySelector("label");
+    if(!label) return;
+    const msg = document.createElement("span");
+    msg.className = "field-error";
+    msg.textContent = message;
+    label.appendChild(msg);
+  }
+
+  document.querySelectorAll("[data-open-wizard]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      current = 0;
+      form.reset();
+      render();
+      dialog.showModal();
+    });
+  });
+
+  dialog.querySelectorAll("[data-close-wizard]").forEach(btn => {
+    btn.addEventListener("click", () => dialog.close());
+  });
+
+  back.addEventListener("click", () => {
+    if(current > 0){
+      current--;
+      render();
+    }
+  });
+  form.addEventListener("input", e => {
+    const field = e.target.closest?.(".field");
+    if(field){
+      field.classList.remove("has-error");
+      field.querySelector(".field-error")?.remove();
+    }
+    const active = steps[current];
+    active?.querySelector(".choice-group-error")?.remove();
+  });
+
+  form.addEventListener("change", () => {
+    const active = steps[current];
+    active?.querySelector(".choice-group-error")?.remove();
+  });
+
+  next.addEventListener("click", async () => {
+    if(current < steps.length - 1){
+      if(!canAdvance()){
+        showChoiceError();
+        return;
+      }
+      clearInlineErrors(steps[current]);
+      current++;
+      render();
+      return;
+    }
+
+    const name = document.getElementById("contactName");
+    const email = document.getElementById("contactEmail");
+
+    clearInlineErrors(steps[current]);
+
+    let firstInvalid = null;
+
+    if(!name.value.trim()){
+      showFieldError(name, "Bitte geben Sie Ihren Namen an.");
+      firstInvalid = firstInvalid || name;
+    }
+
+    if(!email.value.trim()){
+      showFieldError(email, "Bitte geben Sie Ihre E-Mail-Adresse an.");
+      firstInvalid = firstInvalid || email;
+    }else if(!email.checkValidity()){
+      showFieldError(email, "Bitte geben Sie eine gültige E-Mail-Adresse an.");
+      firstInvalid = firstInvalid || email;
+    }
+
+    if(firstInvalid){
+      firstInvalid.focus();
+      firstInvalid.scrollIntoView({behavior:"smooth", block:"center"});
+      return;
+    }
+
+    next.disabled = true;
+    next.textContent = "Wird gesendet …";
+
+    try{
+      await submitWeb3Forms(form);
+      steps.forEach(step => step.classList.remove("active"));
+      success.classList.add("active");
+      progress.style.width = "100%";
+      back.hidden = true;
+      next.hidden = true;
+      }catch(err){
+      next.disabled = false;
+      next.textContent = "Erstgespräch anfragen";
+      const submitError = document.createElement("div");
+      submitError.className = "choice-group-error";
+      submitError.textContent = "Die Anfrage konnte nicht gesendet werden. Bitte versuchen Sie es erneut oder nutzen Sie das Kontaktformular.";
+      steps[current].appendChild(submitError);
+    }
+  });
+
+  dialog.addEventListener("click", e => {
+    if(e.target === dialog) dialog.close();
+  });
+
+  render();
+})();
+
+/* Simple contact form */
+(() => {
+  const form = document.getElementById("contactForm");
+  const status = document.getElementById("contactStatus");
+  const success = document.getElementById("contactSuccess");
+  const submit = form.querySelector(".contact-submit");
+
+  form.addEventListener("submit", async e => {
+    e.preventDefault();
+
+    if(!form.checkValidity()){
+      form.reportValidity();
+      return;
+    }
+
+    submit.disabled = true;
+    submit.querySelector("span:first-child").textContent = "Wird gesendet …";
+    status.textContent = "";
+
+    try{
+      await submitWeb3Forms(form);
+      form.hidden = true;
+      success.hidden = false;
+      form.reset();
+    }catch(err){
+      submit.disabled = false;
+      submit.querySelector("span:first-child").textContent = "Anfrage senden";
+      status.textContent = "Die Anfrage konnte leider nicht gesendet werden. Bitte versuchen Sie es erneut oder schreiben Sie an kontakt@bilgery-solutions.de.";
+    }
+  });
+})();
+
+/* Legal dialogs: footer links work as real links without JS, modal with JS */
+(() => {
+  const map = {
+    impressum: document.getElementById("legalImpressum"),
+    datenschutz: document.getElementById("legalDatenschutz")
+  };
+
+  document.querySelectorAll("[data-legal-open]").forEach(link => {
+    link.addEventListener("click", e => {
+      const dialog = map[link.dataset.legalOpen];
+      if(!dialog || typeof dialog.showModal !== "function") return;
+      e.preventDefault();
+      dialog.showModal();
+      dialog.querySelector(".legal-dialog-body")?.scrollTo(0,0);
+    });
+  });
+
+  document.querySelectorAll(".legal-dialog").forEach(dialog => {
+    dialog.querySelectorAll("[data-legal-close]").forEach(btn => {
+      btn.addEventListener("click", () => dialog.close());
+    });
+    dialog.addEventListener("click", e => {
+      if(e.target === dialog) dialog.close();
+    });
+  });
+})();
+
+</script>
+
+<dialog class="legal-dialog" id="legalImpressum" aria-labelledby="legalImpressumTitle">
+  <div class="legal-dialog-inner">
+    <div class="legal-dialog-head"><strong id="legalImpressumTitle">Impressum</strong><button class="legal-dialog-close" type="button" data-legal-close aria-label="Impressum schließen">×</button></div>
+    <div class="legal-dialog-body">
+<h2>Impressum</h2>
+<h3>Angaben gemäß § 5 DDG</h3>
+<p><strong>Bilgery Solutions GmbH</strong><br>
+Mühlrain 35<br>
+70180 Stuttgart<br>
+Deutschland</p>
+<p>Vertreten durch den Geschäftsführer:<br><strong>Dominik Bilgery</strong></p>
+
+<h3>Kontakt</h3>
+<p>E-Mail: <a href="mailto:kontakt@bilgery-solutions.de">kontakt@bilgery-solutions.de</a></p>
+
+<h3>Registereintrag</h3>
+<p>Registergericht: Amtsgericht Stuttgart<br>
+Handelsregister: HRB 800439</p>
+
+<h3>Umsatzsteuer</h3>
+<p>Sofern für die Gesellschaft eine Umsatzsteuer-Identifikationsnummer nach § 27a UStG vergeben wurde, ist diese vor Veröffentlichung hier zu ergänzen.</p>
+
+<h3>Verbraucherstreitbeilegung</h3>
+<p>Wir sind nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+</div>
+    <div class="legal-dialog-foot"><a href="/impressum/">Impressum als eigene Seite öffnen ↗</a></div>
+  </div>
+</dialog>
+<dialog class="legal-dialog" id="legalDatenschutz" aria-labelledby="legalDatenschutzTitle">
+  <div class="legal-dialog-inner">
+    <div class="legal-dialog-head"><strong id="legalDatenschutzTitle">Datenschutz</strong><button class="legal-dialog-close" type="button" data-legal-close aria-label="Datenschutz schließen">×</button></div>
+    <div class="legal-dialog-body">
+<h2>Datenschutzerklärung</h2>
+<p><strong>Stand: August 2026</strong></p>
+
+<h3>1. Verantwortlicher</h3>
+<p>Bilgery Solutions GmbH<br>
+Mühlrain 35<br>
+70180 Stuttgart<br>
+Deutschland<br>
+E-Mail: <a href="mailto:kontakt@bilgery-solutions.de">kontakt@bilgery-solutions.de</a></p>
+
+<h3>2. Hosting über GitHub Pages</h3>
+<p>Diese Website wird über GitHub Pages bereitgestellt. Anbieter ist GitHub, Inc., 88 Colin P. Kelly Jr. St., San Francisco, CA 94107, USA; als europäische Gesellschaft nennt GitHub außerdem GitHub B.V., Prins Bernhardplein 200, 1097 JB Amsterdam, Niederlande. Beim Aufruf einer GitHub-Pages-Website wird insbesondere die IP-Adresse des Besuchers aus Sicherheitsgründen protokolliert. Die Verarbeitung erfolgt zur sicheren und zuverlässigen Bereitstellung der Website auf Grundlage unseres berechtigten Interesses gemäß Art. 6 Abs. 1 lit. f DSGVO.</p>
+
+<h3>3. Kontakt- und Angebotsformulare (Web3Forms)</h3>
+<p>Wenn Sie das Kontaktformular oder die Funktion „Individuelles Angebot anfragen“ nutzen, verarbeiten wir die von Ihnen eingegebenen Daten zur Bearbeitung Ihrer Anfrage und zur vorvertraglichen Kommunikation. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO; bei sonstigen Anfragen ergänzend Art. 6 Abs. 1 lit. f DSGVO.</p>
+<p>Für die technische Übermittlung der Formulare verwenden wir Web3Forms, betrieben von Web3Creative. Web3Forms verarbeitet die übermittelten Formulardaten in unserem Auftrag. Nach den aktuellen Angaben des Anbieters kann eine Verarbeitung außerhalb des Europäischen Wirtschaftsraums, insbesondere in Indien und über weitere Infrastrukturregionen von Unterauftragsverarbeitern, stattfinden. Der Anbieter sieht hierfür unter anderem die EU-Standardvertragsklauseln als Übermittlungsmechanismus vor.</p>
+<p>Übermitteln Sie über die Formulare bitte keine besonderen Kategorien personenbezogener Daten oder sonstige vertrauliche Informationen, die für die Anfrage nicht erforderlich sind.</p>
+
+<h3>4. Extern eingebundenes Hero-Bild (Unsplash)</h3>
+<p>Das Hintergrundbild im Kopfbereich wird derzeit technisch vom Bilddienst Unsplash geladen. Beim Abruf kann Ihre IP-Adresse an Unsplash, Inc., 1240 20 Ave SE, Suite 301, Calgary, AB T2G 1M8, Kanada, übermittelt werden. Unsplash beschreibt unter anderem die Verarbeitung von Geräte-, Standort- und Server-Log-Informationen. Rechtsgrundlage der Einbindung ist unser berechtigtes Interesse an einer ansprechenden und performanten Darstellung der Website gemäß Art. 6 Abs. 1 lit. f DSGVO. Für die finale Produktionsversion empfehlen wir, das Bild lokal auszuliefern, damit dieser externe Abruf entfällt.</p>
+
+<h3>5. Keine Analyse- oder Marketing-Cookies</h3>
+<p>Auf dieser Website setzen wir derzeit keine eigenen Analyse-, Marketing- oder Profiling-Dienste ein. Es werden von uns keine Tracking-Cookies zu Werbe- oder Analysezwecken gesetzt. Soweit technisch eingebundene Drittanbieter eigene Datenverarbeitungen vornehmen, gelten ergänzend deren Datenschutzhinweise.</p>
+
+<h3>6. Speicherdauer</h3>
+<p>Wir speichern personenbezogene Daten nur so lange, wie dies zur Bearbeitung der jeweiligen Anfrage und zur Erfüllung gesetzlicher Aufbewahrungspflichten erforderlich ist. Entfällt der Verarbeitungszweck und bestehen keine gesetzlichen Pflichten oder berechtigten Gründe für eine weitere Speicherung, werden die Daten gelöscht.</p>
+
+<h3>7. Ihre Rechte</h3>
+<p>Sie haben nach Maßgabe der gesetzlichen Voraussetzungen insbesondere das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung und Datenübertragbarkeit. Außerdem können Sie einer Verarbeitung widersprechen, die auf Art. 6 Abs. 1 lit. f DSGVO beruht. Soweit eine Verarbeitung auf Ihrer Einwilligung beruht, können Sie diese jederzeit mit Wirkung für die Zukunft widerrufen.</p>
+
+<h3>8. Beschwerderecht</h3>
+<p>Sie haben das Recht, sich bei einer Datenschutzaufsichtsbehörde zu beschweren. Für Unternehmen mit Sitz in Baden-Württemberg ist insbesondere der Landesbeauftragte für den Datenschutz und die Informationsfreiheit Baden-Württemberg zuständig.</p>
+
+<h3>9. Sicherheit</h3>
+<p>Die Website wird verschlüsselt über HTTPS übertragen. Wir treffen angemessene technische und organisatorische Maßnahmen, um personenbezogene Daten vor Verlust, Missbrauch und unbefugtem Zugriff zu schützen.</p>
+</div>
+    <div class="legal-dialog-foot"><a href="/datenschutz/">Datenschutzerklärung als eigene Seite öffnen ↗</a></div>
+  </div>
+</dialog>
+
+</body>
 </html>
