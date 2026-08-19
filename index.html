@@ -1249,7 +1249,7 @@ body{background:#fff}
 
 /* hero separation */
 .hero{
-  background:#f2f2ef;
+  background:white;
   padding-bottom:4.8rem;
 }
 
@@ -2171,14 +2171,6 @@ body{background:#fff}
 .hero{
   position:relative;
   isolation:isolate;
-  background:
-    linear-gradient(
-      to bottom,
-      #f2f2ef 0%,
-      #f2f2ef calc(100% - 170px),
-      #f7f7f5 calc(100% - 105px),
-      #ffffff 100%
-    );
 }
 
 /* Keep the hero card itself above the transition background */
@@ -2192,21 +2184,6 @@ body{background:#fff}
   position:relative;
   background:#fff!important;
 }
-
-/* Slightly shorter transition on smaller screens */
-@media(max-width:780px){
-  .hero{
-    background:
-      linear-gradient(
-        to bottom,
-        #f2f2ef 0%,
-        #f2f2ef calc(100% - 110px),
-        #f8f8f6 calc(100% - 60px),
-        #ffffff 100%
-      );
-  }
-}
-
 
 /* =========================================================
    V33 — COPY REFINEMENT / PARAGRAPH RHYTHM
@@ -2521,18 +2498,6 @@ body{background:#fff}
   --surface-dark:#111a24;
 }
 
-/* Hero outer area defines the neutral tone for the whole page */
-.hero{
-  background:
-    linear-gradient(
-      to bottom,
-      var(--surface-neutral) 0%,
-      var(--surface-neutral) calc(100% - 170px),
-      #f7f7f5 calc(100% - 105px),
-      var(--surface-white) 100%
-    )!important;
-}
-
 /* Main light content */
 .section-process{
   background:var(--surface-white)!important;
@@ -2575,21 +2540,6 @@ body{background:#fff}
 .field textarea{
   background:#fff;
 }
-
-/* Mobile transition should use the same neutral */
-@media(max-width:780px){
-  .hero{
-    background:
-      linear-gradient(
-        to bottom,
-        var(--surface-neutral) 0%,
-        var(--surface-neutral) calc(100% - 110px),
-        #f8f8f6 calc(100% - 60px),
-        var(--surface-white) 100%
-      )!important;
-  }
-}
-
 
 /* =========================================================
    V40 — CONSISTENT H2 SCALE
