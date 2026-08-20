@@ -1,0 +1,42 @@
+name: One-time SEO head update
+
+on:
+  push:
+    paths:
+      - '.github/workflows/seo-head-update.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  update-seo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Update SEO metadata
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path('index.html')
+          s = p.read_text(encoding='utf-8')
+          s = s.replace('<title>Professionelle Websites aus Stuttgart | Bilgery Solutions</title>', '<title>Website erstellen lassen in Stuttgart | Bilgery Solutions</title>')
+          s = s.replace('<meta name="description" content="Bilgery Solutions entwickelt professionelle Unternehmenswebsites und Relaunches in Stuttgart – individuell gestaltet, technisch sauber und auf neue Anfragen ausgerichtet.">', '<meta name="description" content="Website erstellen lassen in Stuttgart: Bilgery Solutions entwickelt individuelle Unternehmenswebsites und Relaunches – professionell gestaltet, technisch sauber und auf neue Anfragen ausgerichtet.">')
+          s = s.replace('<meta property="og:title" content="Professionelle Websites aus Stuttgart | Bilgery Solutions">', '<meta property="og:title" content="Website erstellen lassen in Stuttgart | Bilgery Solutions">')
+          s = s.replace('<meta name="twitter:title" content="Professionelle Websites aus Stuttgart | Bilgery Solutions">', '<meta name="twitter:title" content="Website erstellen lassen in Stuttgart | Bilgery Solutions">')
+          old = '"name":"Bilgery Solutions",\n      "publisher":{"@id":"https://bilgery-solutions.de/#organization"}'
+          new = '"name":"Bilgery Solutions",\n      "alternateName":"Bilgery Solutions GmbH",\n      "publisher":{"@id":"https://bilgery-solutions.de/#organization"}'
+          if old in s and '"alternateName":"Bilgery Solutions GmbH"' not in s:
+              s = s.replace(old, new)
+          p.write_text(s, encoding='utf-8')
+          PY
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          if git diff --cached --quiet; then
+            echo "No changes needed"
+          else
+            git commit -m "Optimize homepage SEO metadata"
+            git push
+          fi
